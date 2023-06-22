@@ -2,27 +2,30 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\Users\skgus\Desktop\DX_2023_03-main\DX_1800\x64\Debug\DX_1800.exe</FullPath>
+      <FullPath>C:\Users\skgus\Desktop\DX_2023_03-main\DX2D_2023\DX_1800\x64\Debug\DX_1800.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles>
     <ContentFile>
-      <FullPath>C:\Users\skgus\Desktop\DX_2023_03-main\DX_1800\x64\Debug\ColliderPS.cso</FullPath>
+      <FullPath>C:\Users\skgus\Desktop\DX_2023_03-main\DX2D_2023\DX_1800\x64\Debug\ColliderPS.cso</FullPath>
     </ContentFile>
     <ContentFile>
-      <FullPath>C:\Users\skgus\Desktop\DX_2023_03-main\DX_1800\x64\Debug\ColliderVS.cso</FullPath>
+      <FullPath>C:\Users\skgus\Desktop\DX_2023_03-main\DX2D_2023\DX_1800\x64\Debug\ColliderVS.cso</FullPath>
     </ContentFile>
     <ContentFile>
-      <FullPath>C:\Users\skgus\Desktop\DX_2023_03-main\DX_1800\x64\Debug\SpritePS.cso</FullPath>
+      <FullPath>C:\Users\skgus\Desktop\DX_2023_03-main\DX2D_2023\DX_1800\x64\Debug\ActionPS.cso</FullPath>
     </ContentFile>
     <ContentFile>
-      <FullPath>C:\Users\skgus\Desktop\DX_2023_03-main\DX_1800\x64\Debug\TexturePS.cso</FullPath>
+      <FullPath>C:\Users\skgus\Desktop\DX_2023_03-main\DX2D_2023\DX_1800\x64\Debug\SpritePS.cso</FullPath>
     </ContentFile>
     <ContentFile>
-      <FullPath>C:\Users\skgus\Desktop\DX_2023_03-main\DX_1800\x64\Debug\TextureVS.cso</FullPath>
+      <FullPath>C:\Users\skgus\Desktop\DX_2023_03-main\DX2D_2023\DX_1800\x64\Debug\TexturePS.cso</FullPath>
     </ContentFile>
     <ContentFile>
-      <FullPath>C:\Users\skgus\Desktop\DX_2023_03-main\DX_1800\x64\Debug\TutorialShader.cso</FullPath>
+      <FullPath>C:\Users\skgus\Desktop\DX_2023_03-main\DX2D_2023\DX_1800\x64\Debug\TextureVS.cso</FullPath>
+    </ContentFile>
+    <ContentFile>
+      <FullPath>C:\Users\skgus\Desktop\DX_2023_03-main\DX2D_2023\DX_1800\x64\Debug\TutorialShader.cso</FullPath>
     </ContentFile>
   </ContentFiles>
   <SatelliteDlls />

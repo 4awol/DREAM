@@ -8,7 +8,7 @@ SpriteScene::SpriteScene()
 	_transform = make_shared<Transform>();
 	_transform->SetPosition(CENTER);
 
-	_sprite->SetCurFrame(Vector2(0,1));
+	_sprite->SetCurClip(Vector2(0,1));
 }
 
 SpriteScene::~SpriteScene()
@@ -19,7 +19,7 @@ void SpriteScene::Update()
 {
 	_transform->Update();
 	_sprite->Update();
-	_sprite->SetCurFrame(_action->GetCurClip());
+	_sprite->SetCurClip(_action->GetCurClip());
 	_action->Update();
 }
 
