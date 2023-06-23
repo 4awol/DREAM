@@ -32,6 +32,10 @@
 #define RUN_TIME			Timer::GetInstance()->GetRunTime()
 #define FPS					Timer::GetInstance()->GetFPS()
 
+#define ADD_VS(k)		 ShaderManager::GetInstance()->Add_Vs(k)
+#define ADD_PS(k)	    	ShaderManager::GetInstance()->Add_Ps(k)
+
+
 using CallBack = function<void()>; // 반환형식이 void이고 매개변수없는 얘들만 담을수 있음
 using CallBackInt = function<void(int)>;
 

@@ -1,34 +1,24 @@
 #include "framework.h"
 #include "Sprite.h"
 
-Sprite::Sprite(wstring path, Vector2 maxFrame)
+Sprite::Sprite(wstring path)
     : Quad()
-    , _maxFrame(maxFrame)
 {
     _srv = ADD_SRV(path);
-    _size = _srv->GetImageSize();
-    _size.x /= _maxFrame.x;
-    _size.y /= _maxFrame.y;
-
-    CreateVertices();
-    CreateData(path);
+    _size = _srv.lock()->GetImageSize();
 
     _actionBuffer = make_shared<ActionBuffer>();
-    _actionBuffer->_data.imageSize = _srv->GetImageSize();
-    _actionBuffer->_data.size = _size;
+    _actionBuffer->_data.imageSize = _srv.lock()->GetImageSize();
 }
-Sprite::Sprite(wstring path, Vector2 maxFrame, Vector2 size)
+
+Sprite::Sprite(wstring path, Vector2 size)
 : Quad()
-, _maxFrame(maxFrame)
 {
     _srv = ADD_SRV(path);
     _size = size;
 
-    CreateVertices();
-    CreateData(path);
-
     _actionBuffer = make_shared<ActionBuffer>();
-    _actionBuffer->_data.imageSize = _srv->GetImageSize();
+    _actionBuffer->_data.imageSize = _srv.lock()->GetImageSize();
 }
 
 Sprite::~Sprite()
@@ -86,19 +76,8 @@ void Sprite::CreateData(wstring path)
 {
     _vertexBuffer = make_shared<VertexBuffer>(_vertices.data(), sizeof(Vertex_Texture), _vertices.size());
     _indexBuffer = make_shared<IndexBuffer>(_indices.data(), _indices.size());
-    _vs = make_shared<VertexShader>(L"Shader/TextureVS.hlsl");
-    _ps = make_shared<PixelShader>(L"Shader/ActionPS.hlsl");
+    _vs = ADD_VS(L"Shader/TextureVS.hlsl");
+    _ps = ADD_PS(L"Shader/ActionPS.hlsl");
 }
 
-void Sprite::SetCurClip(Vector2 frame)
-{
-    Vector2 size = _actionBuffer->_data.size;
-    _actionBuffer->_data.startPos.x = (frame.x * size.x);
-    _actionBuffer->_data.startPos.y = (frame.y * size.y) ;
-}
 
-void Sprite::SetCurClip(Action::Clip clip)
-{
-    _actionBuffer->_data.size = clip.size;
-    _actionBuffer->_data.startPos = clip.startPos;
-}
