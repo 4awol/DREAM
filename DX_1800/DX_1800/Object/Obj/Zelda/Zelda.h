@@ -14,6 +14,7 @@ public:
 		RUN_B,
 		RUN_R
 	};
+
 	Zelda();
 	~Zelda();
 
@@ -24,13 +25,13 @@ public:
 
 
 private:
-	void CreateAction();
+	void CreateActions();
 
 	State _state = State::IDLE_F;
 
 	shared_ptr<Transform> _transform;
 	shared_ptr<Sprite_Clip> _sprite;
 
-	vector<shared_ptr<Action>> _action;
+	vector<shared_ptr<Action>> _actions;
 };
 

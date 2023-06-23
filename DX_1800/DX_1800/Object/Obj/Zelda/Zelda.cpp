@@ -4,12 +4,12 @@
 Zelda::Zelda()
 {
 	_transform = make_shared<Transform>();
+	_sprite = make_shared<Sprite_Clip>(L"Resource/Texture/zelda.png", Vector2(50, 50));
 
-	_sprite = make_shared<Sprite_Clip>(L"Resource/Texture/Zelda.png", Vector2(50, 50));
 	_transform->SetPosition(CENTER);
 
-	CreateAction();
-	_action[State::IDLE_F]->Play();
+	CreateActions();
+	_actions[State::IDLE_F]->Play();
 }
 
 Zelda::~Zelda()
@@ -18,11 +18,12 @@ Zelda::~Zelda()
 
 void Zelda::Update()
 {
-	for (auto action : _action)
-		action->Play();
+	Input();
+	for (auto action : _actions)
+		action->Update();
 
 	_transform->Update();
-	_sprite->SetCurClip(_action[_state]->GetCurClip());
+	_sprite->SetCurClip(_actions[_state]->GetCurClip());
 	_sprite->Update();
 }
 
@@ -34,13 +35,54 @@ void Zelda::Render()
 
 void Zelda::Input()
 {
+	Zelda::State _cur = _state;
+	if (KEY_PRESS('S'))
+	{
+		_state = State::RUN_F;
+		_transform->AddVector2(Vector2(0.0f, -1.0f) * 100.0f * DELTA_TIME);
+	}
+	if (KEY_PRESS('W'))
+	{
+		_state = State::RUN_B;
+		_transform->AddVector2(Vector2(0.0f, 1.0f) * 100.0f * DELTA_TIME);
+	}
+	if (KEY_PRESS('A'))
+	{
+		_state = State::RUN_L;
+		_transform->AddVector2(Vector2(-1.0f, 0.0f) * 100.0f * DELTA_TIME);
+	}
+	if (KEY_PRESS('D'))
+	{
+		_state = State::RUN_R;
+		_transform->AddVector2(Vector2(1.0f, 0.0f) * 100.0f * DELTA_TIME);
+	}
+
+	if (KEY_UP('S'))
+	{
+		_state = State::IDLE_F;
+	}
+	if (KEY_UP('W'))
+	{
+		_state = State::IDLE_B;
+	}
+	if (KEY_UP('A'))
+	{
+		_state = State::IDLE_L;
+	}
+	if (KEY_UP('D'))
+	{
+		_state = State::IDLE_R;
+	}
+
+	if (_cur != _state)
+		_actions[_state]->Play();
+	
 }
 
-void Zelda::CreateAction()
+void Zelda::CreateActions()
 {
 	shared_ptr<SRV> srv = ADD_SRV(L"Resource/Texture/zelda.png");
-	Vector2 imageSize = srv->GetImageSize(); // 스프라이트가 포진되어있는 하나의 큰 이미지의 사이즈 
-										// 0,0 에서부터 사이즈가 됨 최대크기를 가지고 있음
+	Vector2 imageSize = srv->GetImageSize();
 	Vector2 maxFrame = Vector2(10, 8);
 	Vector2 size;
 	size.x = imageSize.x / maxFrame.x;
@@ -58,8 +100,7 @@ void Zelda::CreateAction()
 		}
 
 		shared_ptr<Action> action = make_shared<Action>(clips, "IDLE_F", Action::LOOP);
-		action->Play();
-		_action.push_back(action);
+		_actions.push_back(action);
 	}
 
 	// IDLE_L
@@ -73,7 +114,7 @@ void Zelda::CreateAction()
 		}
 
 		shared_ptr<Action> action = make_shared<Action>(clips, "IDLE_L", Action::LOOP);
-		_action.push_back(action);
+		_actions.push_back(action);
 	}
 
 	// IDLE_B
@@ -87,7 +128,7 @@ void Zelda::CreateAction()
 		}
 
 		shared_ptr<Action> action = make_shared<Action>(clips, "IDLE_B", Action::LOOP);
-		_action.push_back(action);
+		_actions.push_back(action);
 	}
 
 	// IDLE_R
@@ -101,7 +142,7 @@ void Zelda::CreateAction()
 		}
 
 		shared_ptr<Action> action = make_shared<Action>(clips, "IDLE_R", Action::LOOP);
-		_action.push_back(action);
+		_actions.push_back(action);
 	}
 
 	// RUN_F
@@ -115,7 +156,7 @@ void Zelda::CreateAction()
 		}
 
 		shared_ptr<Action> action = make_shared<Action>(clips, "RUN_F", Action::LOOP);
-		_action.push_back(action);
+		_actions.push_back(action);
 	}
 
 	// RUN_L
@@ -129,7 +170,7 @@ void Zelda::CreateAction()
 		}
 
 		shared_ptr<Action> action = make_shared<Action>(clips, "RUN_L", Action::LOOP);
-		_action.push_back(action);
+		_actions.push_back(action);
 	}
 
 	// RUN_B
@@ -143,7 +184,7 @@ void Zelda::CreateAction()
 		}
 
 		shared_ptr<Action> action = make_shared<Action>(clips, "RUN_B", Action::LOOP);
-		_action.push_back(action);
+		_actions.push_back(action);
 	}
 
 	// RUN_R
@@ -157,6 +198,6 @@ void Zelda::CreateAction()
 		}
 
 		shared_ptr<Action> action = make_shared<Action>(clips, "RUN_R", Action::LOOP);
-		_action.push_back(action);
+		_actions.push_back(action);
 	}
 }
