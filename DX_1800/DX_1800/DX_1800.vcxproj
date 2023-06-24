@@ -151,7 +151,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Object\Obj\CupHead\CupHead.h" />
+    <ClInclude Include="Scene\BagicScene\CupHeadScene.h" />
     <ClInclude Include="Framework\Animation\Action.h" />
+    <ClInclude Include="Framework\Utility\tinyxml2.h" />
     <ClInclude Include="Object\Obj\DunGreed\DunMonster.h" />
     <ClInclude Include="Framework\Collider\CircleCollider.h" />
     <ClInclude Include="Framework\Collider\Collider.h" />
@@ -198,7 +201,10 @@
     <ClInclude Include="Scene\BagicScene\ZeldaScene.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Object\Obj\CupHead\CupHead.cpp" />
+    <ClCompile Include="Scene\BagicScene\CupHeadScene.cpp" />
     <ClCompile Include="Framework\Animation\Action.cpp" />
+    <ClCompile Include="Framework\Utility\tinyxml2.cpp" />
     <ClCompile Include="Object\Obj\DunGreed\DunMonster.cpp" />
     <ClCompile Include="Framework\Collider\CircleCollider.cpp" />
     <ClCompile Include="Framework\Collider\Collider.cpp" />
@@ -254,9 +260,16 @@
   <ItemGroup>
     <Image Include="..\..\..\..\0612\DX_2023_03-main\DX_2023_03-main\DX_1800\DX_1800\Resource\Texture\zelda.png" />
     <Image Include="DX_1800.ico" />
+    <Image Include="Resource\CupHead\AimStraightShot.png" />
+    <Image Include="Resource\CupHead\Bullet_Loop.png" />
+    <Image Include="Resource\CupHead\Idle.png" />
+    <Image Include="Resource\CupHead\Jump.png" />
+    <Image Include="Resource\CupHead\Run.png" />
+    <Image Include="Resource\CupHead\track.png" />
     <Image Include="Resource\Texture\Bow.png" />
     <Image Include="Resource\Texture\Bullet.png" />
     <Image Include="Resource\Texture\earth.png" />
+    <Image Include="Resource\Texture\hit_4x2.png" />
     <Image Include="Resource\Texture\moon.png" />
     <Image Include="Resource\Texture\Player.png" />
     <Image Include="Resource\Texture\sun.png" />
@@ -365,6 +378,13 @@
     <ProjectReference Include="..\ImGUI\ImGUI.vcxproj">
       <Project>{cbc80606-cfba-4317-b628-51ec3af5f7c2}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="Resource\CupHead\AimStraightShot.xml" />
+    <Xml Include="Resource\CupHead\Bullet_Loop.xml" />
+    <Xml Include="Resource\CupHead\Idle.xml" />
+    <Xml Include="Resource\CupHead\Jump.xml" />
+    <Xml Include="Resource\CupHead\Run.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -51,7 +51,7 @@ using namespace Microsoft::WRL;
 // Utility
 #include "Framework/Utility/Timer.h"
 #include "Framework/Utility/InputManager.h"
-
+#include "Framework/Utility/tinyxml2.h"
 
 // Render
 #include "Framework/Render/ConstantBuffer.h"

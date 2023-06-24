@@ -150,6 +150,15 @@
     <ClInclude Include="Scene\BagicScene\ZeldaScene.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Framework\Utility\tinyxml2.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\BagicScene\CupHeadScene.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\Obj\CupHead\CupHead.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DX_1800.cpp">
@@ -272,6 +281,15 @@
     <ClCompile Include="Scene\BagicScene\ZeldaScene.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Framework\Utility\tinyxml2.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\BagicScene\CupHeadScene.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\Obj\CupHead\CupHead.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="DX_1800.rc">
@@ -312,6 +330,27 @@
     <Image Include="..\..\..\..\0612\DX_2023_03-main\DX_2023_03-main\DX_1800\DX_1800\Resource\Texture\zelda.png">
       <Filter>리소스 파일</Filter>
     </Image>
+    <Image Include="Resource\Texture\hit_4x2.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\CupHead\AimStraightShot.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\CupHead\Bullet_Loop.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\CupHead\Idle.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\CupHead\Jump.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\CupHead\Run.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\CupHead\track.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Shader\TutorialShader.hlsl" />
@@ -321,5 +360,12 @@
     <FxCompile Include="Shader\ColliderPS.hlsl" />
     <FxCompile Include="Shader\SpritePS.hlsl" />
     <FxCompile Include="Shader\ActionPS.hlsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="Resource\CupHead\AimStraightShot.xml" />
+    <Xml Include="Resource\CupHead\Bullet_Loop.xml" />
+    <Xml Include="Resource\CupHead\Idle.xml" />
+    <Xml Include="Resource\CupHead\Jump.xml" />
+    <Xml Include="Resource\CupHead\Run.xml" />
   </ItemGroup>
 </Project>
