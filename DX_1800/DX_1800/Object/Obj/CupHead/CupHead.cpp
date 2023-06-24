@@ -5,8 +5,21 @@
 
 CupHead::CupHead()
 {
-	_transform = make_shared<Transform>();
 	_col = make_shared<CircleCollider>(50);
+	_transform = make_shared<Transform>();
+
+	CreateAction("IDLE");
+	CreateAction("RUN");
+	CreateAction("JUMP");
+	CreateAction("ATTACK");
+
+	_transform->SetPosition(CENTER);
+	_transform->SetParent(_col->GetTransform());
+	_transform->AddVector2(Vector2(0, 20));
+
+	_actions[State::IDLE]->Play();
+	_actions[State::RUN]->Play();
+
 }
 
 CupHead::~CupHead()
@@ -15,49 +28,75 @@ CupHead::~CupHead()
 
 void CupHead::Update()
 {
+	_col->Update();
+	_transform->Update();
+
+	_actions[_state]->Update();
+
+	_sprites[_state]->SetCurClip(_actions[_state]->GetCurClip());
+	_sprites[_state]->Update();
 }
 
 void CupHead::Render()
 {
+	_col->Render();
+
+	_transform->SetWorldBuffer(0);
+
+	_sprites[_state]->Render();
+
 }
 
 void CupHead::PostRender()
 {
+	ImGui::SliderInt("State", (int*)&_state, 0, 1);
 }
 
 void CupHead::CreateAction(string name, float speed, Action::Type type, CallBack callBack)
 {
-	string xmlPath = "Resource/CupHead" + name + "xml";
 	wstring wName = wstring(name.begin(), name.end());
-	wstring srvPath = L"Resource/CupHead" + wName + L"png";
+	wstring srvPath = L"Resource/CupHead/" + wName + L".png";
 	shared_ptr<SRV> srv = ADD_SRV(wName);
 
+	string xmlPath = "Resource/CupHead/" + name + ".xml";
 	shared_ptr<tinyxml2::XMLDocument> document = make_shared<tinyxml2::XMLDocument>();
-	document->LoadFile(xmlPath.c_str()); // .c_str()  첫번째 위치주소를 const char로 변환한것
+	document->LoadFile(xmlPath.c_str());
 
-	tinyxml2::XMLElement* textureAtlas = document->FirstChildElement(); // document의 첫번째 자식의 주소로 받는다.
+	tinyxml2::XMLElement* textureAtlas = document->FirstChildElement();
 	tinyxml2::XMLElement* row = textureAtlas->FirstChildElement();
 
-	vector < Action::Clip> clips;
+	vector<Action::Clip> clips;
+	float averageW = 0;
+	float averageH = 0;
+	int count = 0;
 
 	while (true)
 	{
 		if (row == nullptr)
-			return;
+			break;
 
-		int x = row->FindAttribute("x")->IntValue(); //row의 요소 "x"를 int값으로 만들어주겠다.
+		int x = row->FindAttribute("x")->IntValue();
 		int y = row->FindAttribute("y")->IntValue();
-		int w = row->FindAttribute("y")->IntValue();
+		int w = row->FindAttribute("w")->IntValue();
 		int h = row->FindAttribute("h")->IntValue();
 
-		Action::Clip clip = Action::Clip(x, y, w, h , srv);
+		averageW += w;
+		averageH += h;
+		count++;
+
+		Action::Clip clip = Action::Clip(x, y, w, h, srv);
 		clips.push_back(clip);
 
 		row = row->NextSiblingElement();
 	}
 
-	// 액션 만들기
+	shared_ptr<Action> action = make_shared<Action>(clips, name, type, speed);
+	action->SetEndEvent(callBack);
+	
+	_actions.push_back(action);
 
-	shared_ptr<Action> action = make_shared<Action>();
+	shared_ptr<Sprite_Clip> sprite = make_shared<Sprite_Clip>(srvPath, Vector2(averageW / count, averageH / count));
+	_sprites.push_back(sprite);
+
 
 }
