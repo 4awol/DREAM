@@ -1,4 +1,8 @@
-﻿  CupHead.cpp
+﻿  framework.cpp
+C:\Users\skgus\Desktop\DX_2023_03-main\DX2D_2023\DX_1800\DX_1800\Framework\Math\Vector2.h(11,16): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\skgus\Desktop\DX_2023_03-main\DX2D_2023\DX_1800\DX_1800\Framework\Math\Vector2.h(11,14): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  CupBG.cpp
+  CupHead.cpp
 C:\Users\skgus\Desktop\DX_2023_03-main\DX2D_2023\DX_1800\DX_1800\Object\Obj\CupHead\CupHead.cpp(128,45): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 C:\Users\skgus\Desktop\DX_2023_03-main\DX2D_2023\DX_1800\DX_1800\Object\Obj\CupHead\CupHead.cpp(128,42): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 C:\Users\skgus\Desktop\DX_2023_03-main\DX2D_2023\DX_1800\DX_1800\Object\Obj\CupHead\CupHead.cpp(128,39): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
@@ -24,4 +28,166 @@ C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.2
               _Ty=CircleCollider
           ]
 C:\Users\skgus\Desktop\DX_2023_03-main\DX2D_2023\DX_1800\DX_1800\Object\Obj\CupHead\CupHead.cpp(8): message : 컴파일되는 함수 템플릿 인스턴스화 'std::shared_ptr<CircleCollider> std::make_shared<CircleCollider,int>(int &&)'에 대한 참조를 확인하세요.
+  CupHeadScene.cpp
+  Action.cpp
+C:\Users\skgus\Desktop\DX_2023_03-main\DX2D_2023\DX_1800\DX_1800\Framework\Animation\Action.cpp(22,21): warning C4244: '+=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  tinyxml2.cpp
+  DunMonster.cpp
+  CircleCollider.cpp
+C:\Users\skgus\Desktop\DX_2023_03-main\DX2D_2023\DX_1800\DX_1800\Framework\Collider\CircleCollider.cpp(38,33): warning C4267: '인수': 'size_t'에서 'UINT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\skgus\Desktop\DX_2023_03-main\DX2D_2023\DX_1800\DX_1800\Framework\Collider\CircleCollider.cpp(47,41): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\skgus\Desktop\DX_2023_03-main\DX2D_2023\DX_1800\DX_1800\Framework\Collider\CircleCollider.cpp(47,73): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\xutility(142,1): warning C4267: '인수': 'size_t'에서 'UINT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\memory(2006): message : 컴파일되는 함수 템플릿 인스턴스화 'void std::_Construct_in_place<_Ty,Vertex*,unsigned __int64,unsigned __int64>(_Ty &,Vertex *&&,unsigned __int64 &&,unsigned __int64 &&) noexcept(false)'에 대한 참조를 확인하세요.
+          with
+          [
+              _Ty=VertexBuffer
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\memory(2725): message : 컴파일되는 함수 템플릿 인스턴스화 'std::_Ref_count_obj2<_Ty>::_Ref_count_obj2<Vertex*,unsigned __int64,unsigned __int64>(Vertex *&&,unsigned __int64 &&,unsigned __int64 &&)'에 대한 참조를 확인하세요.
+          with
+          [
+              _Ty=VertexBuffer
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\memory(2726): message : 컴파일되는 함수 템플릿 인스턴스화 'std::_Ref_count_obj2<_Ty>::_Ref_count_obj2<Vertex*,unsigned __int64,unsigned __int64>(Vertex *&&,unsigned __int64 &&,unsigned __int64 &&)'에 대한 참조를 확인하세요.
+          with
+          [
+              _Ty=VertexBuffer
+          ]
+C:\Users\skgus\Desktop\DX_2023_03-main\DX2D_2023\DX_1800\DX_1800\Framework\Collider\CircleCollider.cpp(54): message : 컴파일되는 함수 템플릿 인스턴스화 'std::shared_ptr<VertexBuffer> std::make_shared<VertexBuffer,_Ty*,size_t,unsigned __int64>(_Ty *&&,size_t &&,unsigned __int64 &&)'에 대한 참조를 확인하세요.
+          with
+          [
+              _Ty=Vertex
+          ]
+  Collider.cpp
+  ColliderScene.cpp
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\xutility(149,77): warning C4244: '인수': '_Ty'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              _Ty=int
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\memory(2006): message : 컴파일되는 함수 템플릿 인스턴스화 'void std::_Construct_in_place<_Ty,int>(_Ty &,int &&) noexcept(false)'에 대한 참조를 확인하세요.
+          with
+          [
+              _Ty=CircleCollider
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\memory(2725): message : 컴파일되는 함수 템플릿 인스턴스화 'std::_Ref_count_obj2<_Ty>::_Ref_count_obj2<int>(int &&)'에 대한 참조를 확인하세요.
+          with
+          [
+              _Ty=CircleCollider
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\memory(2726): message : 컴파일되는 함수 템플릿 인스턴스화 'std::_Ref_count_obj2<_Ty>::_Ref_count_obj2<int>(int &&)'에 대한 참조를 확인하세요.
+          with
+          [
+              _Ty=CircleCollider
+          ]
+C:\Users\skgus\Desktop\DX_2023_03-main\DX2D_2023\DX_1800\DX_1800\Scene\BagicScene\ColliderScene.cpp(6): message : 컴파일되는 함수 템플릿 인스턴스화 'std::shared_ptr<CircleCollider> std::make_shared<CircleCollider,int>(int &&)'에 대한 참조를 확인하세요.
+  RectCollider.cpp
+C:\Users\skgus\Desktop\DX_2023_03-main\DX2D_2023\DX_1800\DX_1800\Framework\Collider\RectCollider.cpp(38,33): warning C4267: '인수': 'size_t'에서 'UINT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\xutility(142,1): warning C4267: '인수': 'size_t'에서 'UINT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\memory(2006): message : 컴파일되는 함수 템플릿 인스턴스화 'void std::_Construct_in_place<_Ty,Vertex*,unsigned __int64,unsigned __int64>(_Ty &,Vertex *&&,unsigned __int64 &&,unsigned __int64 &&) noexcept(false)'에 대한 참조를 확인하세요.
+          with
+          [
+              _Ty=VertexBuffer
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\memory(2725): message : 컴파일되는 함수 템플릿 인스턴스화 'std::_Ref_count_obj2<_Ty>::_Ref_count_obj2<Vertex*,unsigned __int64,unsigned __int64>(Vertex *&&,unsigned __int64 &&,unsigned __int64 &&)'에 대한 참조를 확인하세요.
+          with
+          [
+              _Ty=VertexBuffer
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\memory(2726): message : 컴파일되는 함수 템플릿 인스턴스화 'std::_Ref_count_obj2<_Ty>::_Ref_count_obj2<Vertex*,unsigned __int64,unsigned __int64>(Vertex *&&,unsigned __int64 &&,unsigned __int64 &&)'에 대한 참조를 확인하세요.
+          with
+          [
+              _Ty=VertexBuffer
+          ]
+C:\Users\skgus\Desktop\DX_2023_03-main\DX2D_2023\DX_1800\DX_1800\Framework\Collider\RectCollider.cpp(65): message : 컴파일되는 함수 템플릿 인스턴스화 'std::shared_ptr<VertexBuffer> std::make_shared<VertexBuffer,_Ty*,size_t,unsigned __int64>(_Ty *&&,size_t &&,unsigned __int64 &&)'에 대한 참조를 확인하세요.
+          with
+          [
+              _Ty=Vertex
+          ]
+  DunGreedScene.cpp
+  BlendState.cpp
+  InputManager.cpp
+  DunBullet.cpp
+C:\Users\skgus\Desktop\DX_2023_03-main\DX2D_2023\DX_1800\DX_1800\Object\Obj\DunGreed\DunBullet.cpp(22,24): warning C4244: '+=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  DunPlayer.cpp
+C:\Users\skgus\Desktop\DX_2023_03-main\DX2D_2023\DX_1800\DX_1800\Object\Obj\DunGreed\DunPlayer.cpp(18,33): warning C4305: '인수': 'double'에서 'float'(으)로 잘립니다.
+  Vector2.cpp
+C:\Users\skgus\Desktop\DX_2023_03-main\DX2D_2023\DX_1800\DX_1800\Framework\Math\Vector2.cpp(32,29): warning C4244: 'return': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  ConstantBuffer.cpp
+  Device.cpp
+  DX_1800.cpp
+  PixelShader.cpp
+  코드를 생성하고 있습니다...
+  컴파일하고 있습니다...
+  IndexBuffer.cpp
+  Planet.cpp
+  Program.cpp
+  VertexBuffer.cpp
+  VertexShader.cpp
+  SamplerState.cpp
+  SRV.cpp
+C:\Users\skgus\Desktop\DX_2023_03-main\DX2D_2023\DX_1800\DX_1800\Framework\TextureMapping\SRV.cpp(9,39): warning C4244: '=': 'const size_t'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\skgus\Desktop\DX_2023_03-main\DX2D_2023\DX_1800\DX_1800\Framework\TextureMapping\SRV.cpp(10,39): warning C4244: '=': 'const size_t'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Quad.cpp
+C:\Users\skgus\Desktop\DX_2023_03-main\DX2D_2023\DX_1800\DX_1800\Object\BagicObject\Quad.cpp(44,40): warning C4267: '인수': 'size_t'에서 'UINT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\xutility(142,1): warning C4267: '인수': 'size_t'에서 'UINT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\memory(2006): message : 컴파일되는 함수 템플릿 인스턴스화 'void std::_Construct_in_place<_Ty,Vertex_Texture*,unsigned __int64,unsigned __int64>(_Ty &,Vertex_Texture *&&,unsigned __int64 &&,unsigned __int64 &&) noexcept(false)'에 대한 참조를 확인하세요.
+          with
+          [
+              _Ty=VertexBuffer
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\memory(2725): message : 컴파일되는 함수 템플릿 인스턴스화 'std::_Ref_count_obj2<_Ty>::_Ref_count_obj2<Vertex_Texture*,unsigned __int64,unsigned __int64>(Vertex_Texture *&&,unsigned __int64 &&,unsigned __int64 &&)'에 대한 참조를 확인하세요.
+          with
+          [
+              _Ty=VertexBuffer
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\memory(2726): message : 컴파일되는 함수 템플릿 인스턴스화 'std::_Ref_count_obj2<_Ty>::_Ref_count_obj2<Vertex_Texture*,unsigned __int64,unsigned __int64>(Vertex_Texture *&&,unsigned __int64 &&,unsigned __int64 &&)'에 대한 참조를 확인하세요.
+          with
+          [
+              _Ty=VertexBuffer
+          ]
+C:\Users\skgus\Desktop\DX_2023_03-main\DX2D_2023\DX_1800\DX_1800\Object\BagicObject\Quad.cpp(84): message : 컴파일되는 함수 템플릿 인스턴스화 'std::shared_ptr<VertexBuffer> std::make_shared<VertexBuffer,_Ty*,size_t,unsigned __int64>(_Ty *&&,size_t &&,unsigned __int64 &&)'에 대한 참조를 확인하세요.
+          with
+          [
+              _Ty=Vertex_Texture
+          ]
+  Scene.cpp
+  TutorialScene.cpp
+  Transform.cpp
+  SolarSystem.cpp
+  StateManager.cpp
+  Timer.cpp
+  SRVManager.cpp
+  SpriteScene.cpp
+  Sprite.cpp
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\xutility(142,1): warning C4267: '인수': 'size_t'에서 'UINT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\memory(2006): message : 컴파일되는 함수 템플릿 인스턴스화 'void std::_Construct_in_place<_Ty,Vertex_Texture*,unsigned __int64,unsigned __int64>(_Ty &,Vertex_Texture *&&,unsigned __int64 &&,unsigned __int64 &&) noexcept(false)'에 대한 참조를 확인하세요.
+          with
+          [
+              _Ty=VertexBuffer
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\memory(2725): message : 컴파일되는 함수 템플릿 인스턴스화 'std::_Ref_count_obj2<_Ty>::_Ref_count_obj2<Vertex_Texture*,unsigned __int64,unsigned __int64>(Vertex_Texture *&&,unsigned __int64 &&,unsigned __int64 &&)'에 대한 참조를 확인하세요.
+          with
+          [
+              _Ty=VertexBuffer
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\memory(2726): message : 컴파일되는 함수 템플릿 인스턴스화 'std::_Ref_count_obj2<_Ty>::_Ref_count_obj2<Vertex_Texture*,unsigned __int64,unsigned __int64>(Vertex_Texture *&&,unsigned __int64 &&,unsigned __int64 &&)'에 대한 참조를 확인하세요.
+          with
+          [
+              _Ty=VertexBuffer
+          ]
+C:\Users\skgus\Desktop\DX_2023_03-main\DX2D_2023\DX_1800\DX_1800\Object\BagicObject\Sprite.cpp(79): message : 컴파일되는 함수 템플릿 인스턴스화 'std::shared_ptr<VertexBuffer> std::make_shared<VertexBuffer,_Ty*,size_t,unsigned __int64>(_Ty *&&,size_t &&,unsigned __int64 &&)'에 대한 참조를 확인하세요.
+          with
+          [
+              _Ty=Vertex_Texture
+          ]
+  Shader.cpp
+  Sprite_Clip.cpp
+  Sprite_Frame.cpp
+  코드를 생성하고 있습니다...
+  컴파일하고 있습니다...
+  ShaderManager.cpp
+  Zelda.cpp
+  ZeldaScene.cpp
+  코드를 생성하고 있습니다...
   DX_1800.vcxproj -> C:\Users\skgus\Desktop\DX_2023_03-main\DX2D_2023\DX_1800\x64\Debug\DX_1800.exe

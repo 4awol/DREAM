@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Object\Obj\CupHead\CupBG.h" />
     <ClInclude Include="Object\Obj\CupHead\CupHead.h" />
     <ClInclude Include="Scene\BagicScene\CupHeadScene.h" />
     <ClInclude Include="Framework\Animation\Action.h" />
@@ -201,6 +202,7 @@
     <ClInclude Include="Scene\BagicScene\ZeldaScene.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Object\Obj\CupHead\CupBG.cpp" />
     <ClCompile Include="Object\Obj\CupHead\CupHead.cpp" />
     <ClCompile Include="Scene\BagicScene\CupHeadScene.cpp" />
     <ClCompile Include="Framework\Animation\Action.cpp" />

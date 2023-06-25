@@ -15,6 +15,8 @@ public:
 	virtual void CreateVertices();
 	virtual void CreateData(wstring path);
 
+	Vector2 GetImageSize() { return _srv.lock()->GetImageSize(); }
+
 protected:
 	vector<Vertex_Texture> _vertices;
 	vector<UINT> _indices;

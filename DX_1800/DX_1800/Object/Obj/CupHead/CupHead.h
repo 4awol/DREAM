@@ -29,8 +29,9 @@ public:
 	}
 
 	void Input();
-
 	void SetAction(State state);
+
+	shared_ptr<CircleCollider> GetCollider() { return _col; }
 
 private:
 	void CreateAction(string name, float speed = 0.1f, Action::Type type = Action::Type::LOOP, CallBack callBack = nullptr);
