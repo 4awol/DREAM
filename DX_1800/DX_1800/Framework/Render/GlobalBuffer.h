@@ -90,3 +90,24 @@ public:
 	Data _data;
 };
 
+class IntBuffer : public ConstantBuffer
+{
+public:
+	struct Data
+	{
+		int value1 =0;
+		int value2 = 0;
+		int value3 = 0;
+		int value4 = 0;
+	};
+
+	IntBuffer()
+		: ConstantBuffer(&_data, sizeof(_data))
+	{
+	}
+
+	virtual ~IntBuffer() {}
+
+	Data _data;
+};
+

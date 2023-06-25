@@ -65,6 +65,11 @@ public:
 
 		return *this;
 	}
+	Vector2 operator-() const
+	{
+		return Vector2(-x, -y);
+	}
+
 
 	bool operator==(const Vector2& other) const;
 	bool operator!=(const Vector2& other) const;

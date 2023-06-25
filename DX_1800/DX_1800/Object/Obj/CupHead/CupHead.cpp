@@ -10,15 +10,18 @@ CupHead::CupHead()
 
 	CreateAction("IDLE");
 	CreateAction("RUN");
-	CreateAction("JUMP");
-	CreateAction("ATTACK");
+	
 
-	_transform->SetPosition(CENTER);
+	_col->GetTransform()->SetPosition(CENTER);
+
 	_transform->SetParent(_col->GetTransform());
 	_transform->AddVector2(Vector2(0, 20));
 
 	_actions[State::IDLE]->Play();
 	_actions[State::RUN]->Play();
+
+	_sprites[0]->SetLeft();
+	_sprites[1]->SetLeft();
 
 }
 
@@ -28,6 +31,7 @@ CupHead::~CupHead()
 
 void CupHead::Update()
 {
+	Input();
 	_col->Update();
 	_transform->Update();
 
@@ -50,6 +54,43 @@ void CupHead::Render()
 void CupHead::PostRender()
 {
 	ImGui::SliderInt("State", (int*)&_state, 0, 1);
+}
+
+void CupHead::Input()
+{
+	if (KEY_PRESS('A'))
+	{
+		_col->GetTransform()->AddVector2(-RIGHT_VECTOR*_speed*DELTA_TIME);
+		SetLeft();
+		SetAction(State::RUN);
+	}
+	else if (KEY_UP('A'))
+	{
+		SetAction(State::IDLE);
+	}
+	if (KEY_PRESS('D'))
+	{
+		_col->GetTransform()->AddVector2(RIGHT_VECTOR * _speed * DELTA_TIME);
+		SetRight();
+		SetAction(State::RUN);
+	}
+	else if (KEY_UP('D'))
+	{
+		SetAction(State::IDLE);
+	}
+
+}
+
+void CupHead::SetAction(State state)
+{
+	if (_state == state)
+		return;
+	
+	_actions[_state]->Reset();
+	_actions[_state]->Pause();
+
+	_state = state;
+	_actions[_state]->Play();
 }
 
 void CupHead::CreateAction(string name, float speed, Action::Type type, CallBack callBack)

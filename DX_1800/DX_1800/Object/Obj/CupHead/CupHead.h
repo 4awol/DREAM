@@ -16,6 +16,22 @@ public:
 	void Render();
 	void PostRender();
 
+	void SetLeft()
+	{
+		for (auto sprite : _sprites)
+			sprite->SetLeft();
+	}
+
+	void SetRight()
+	{
+		for (auto sprite : _sprites)
+			sprite->SetRight();
+	}
+
+	void Input();
+
+	void SetAction(State state);
+
 private:
 	void CreateAction(string name, float speed = 0.1f, Action::Type type = Action::Type::LOOP, CallBack callBack = nullptr);
 
@@ -26,5 +42,10 @@ private:
 	vector<shared_ptr<Sprite_Clip>> _sprites;
 
 	State _state = State::IDLE;
+
+	bool _isFalling;
+	bool _isAttack;
+
+	float _speed = 300.0f;
 };
 
