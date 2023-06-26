@@ -9,7 +9,6 @@
 #include "../Scene/BagicScene/ZeldaScene.h"
 #include "../Scene/BagicScene/CupHeadScene.h"
 
-
 Program::Program()
 {
 	srand(static_cast<unsigned int>(time(nullptr)));
@@ -25,6 +24,8 @@ Program::Program()
 
 	_proj->SetData(temp);
 	_proj->Update_Resource();
+
+	Timer::GetInstance()->LockFPS(60);
 }
 
 Program::~Program()

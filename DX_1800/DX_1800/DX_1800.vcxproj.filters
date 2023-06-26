@@ -330,28 +330,16 @@
     <Image Include="Resource\Texture\zelda.png">
       <Filter>리소스 파일</Filter>
     </Image>
-    <Image Include="Resource\Texture\Winter.png">
+    <Image Include="Resource\CupHead\Idle.png">
       <Filter>리소스 파일</Filter>
     </Image>
-    <Image Include="..\..\..\..\0612\DX_2023_03-main\DX_2023_03-main\DX_1800\DX_1800\Resource\Texture\zelda.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Resource\Texture\hit_4x2.png">
+    <Image Include="Resource\CupHead\Run.png">
       <Filter>리소스 파일</Filter>
     </Image>
     <Image Include="Resource\CupHead\AimStraightShot.png">
       <Filter>리소스 파일</Filter>
     </Image>
-    <Image Include="Resource\CupHead\Bullet_Loop.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Resource\CupHead\Idle.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
     <Image Include="Resource\CupHead\Jump.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Resource\CupHead\Run.png">
       <Filter>리소스 파일</Filter>
     </Image>
     <Image Include="Resource\CupHead\track.png">
@@ -368,10 +356,9 @@
     <FxCompile Include="Shader\ActionPS.hlsl" />
   </ItemGroup>
   <ItemGroup>
-    <Xml Include="Resource\CupHead\AimStraightShot.xml" />
-    <Xml Include="Resource\CupHead\Bullet_Loop.xml" />
     <Xml Include="Resource\CupHead\Idle.xml" />
-    <Xml Include="Resource\CupHead\Jump.xml" />
     <Xml Include="Resource\CupHead\Run.xml" />
+    <Xml Include="Resource\CupHead\AimStraightShot.xml" />
+    <Xml Include="Resource\CupHead\Jump.xml" />
   </ItemGroup>
 </Project>

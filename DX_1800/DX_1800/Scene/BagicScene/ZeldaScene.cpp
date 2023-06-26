@@ -1,7 +1,7 @@
 #include "framework.h"
 #include "ZeldaScene.h"
 
-#include "../../Object/Obj/Zelda/Zelda.h"
+#include "Object/Obj/Zelda/Zelda.h"
 
 ZeldaScene::ZeldaScene()
 {

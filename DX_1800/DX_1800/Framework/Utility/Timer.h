@@ -29,6 +29,7 @@ public:
 	void Update();
 
 	int GetFPS() { return _frameRate; }
+	void LockFPS(double value) { _lockFPS = value; }
 	double GetDeltaTime() { return _deltaTime; }
 	double GetRunTime() { return _runTime; }
 

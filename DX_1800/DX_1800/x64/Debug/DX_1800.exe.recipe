@@ -7,13 +7,13 @@
   </ProjectOutputs>
   <ContentFiles>
     <ContentFile>
+      <FullPath>C:\Users\skgus\Desktop\DX_2023_03-main\DX2D_2023\DX_1800\x64\Debug\ActionPS.cso</FullPath>
+    </ContentFile>
+    <ContentFile>
       <FullPath>C:\Users\skgus\Desktop\DX_2023_03-main\DX2D_2023\DX_1800\x64\Debug\ColliderPS.cso</FullPath>
     </ContentFile>
     <ContentFile>
       <FullPath>C:\Users\skgus\Desktop\DX_2023_03-main\DX2D_2023\DX_1800\x64\Debug\ColliderVS.cso</FullPath>
-    </ContentFile>
-    <ContentFile>
-      <FullPath>C:\Users\skgus\Desktop\DX_2023_03-main\DX2D_2023\DX_1800\x64\Debug\ActionPS.cso</FullPath>
     </ContentFile>
     <ContentFile>
       <FullPath>C:\Users\skgus\Desktop\DX_2023_03-main\DX2D_2023\DX_1800\x64\Debug\SpritePS.cso</FullPath>

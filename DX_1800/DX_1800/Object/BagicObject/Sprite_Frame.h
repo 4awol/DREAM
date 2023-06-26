@@ -2,8 +2,9 @@
 class Sprite_Frame : public Sprite
 {
 public:
-	Sprite_Frame(wstring path, Vector2 maxFrame); // Frame  별로 잘 나눠어져있을 때
-	Sprite_Frame(wstring path, Vector2 maxFrame, Vector2 size);  // Action을 이용하여 클립으로 세팅할 때
+	// TODO: 분리하기
+	Sprite_Frame(wstring path, Vector2 maxFrame);
+	Sprite_Frame(wstring path, Vector2 maxFrame, Vector2 size);
 	virtual ~Sprite_Frame();
 
 	virtual void Update() override;
@@ -11,7 +12,7 @@ public:
 
 	void SetCurClip(Vector2 frame);
 
-protected:
+private:
 	Vector2 _maxFrame;
 };
 

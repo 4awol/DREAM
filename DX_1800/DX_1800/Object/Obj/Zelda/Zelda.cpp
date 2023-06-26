@@ -4,9 +4,9 @@
 Zelda::Zelda()
 {
 	_transform = make_shared<Transform>();
-	_sprite = make_shared<Sprite_Clip>(L"Resource/Texture/zelda.png", Vector2(50, 50));
+	_sprite= make_shared<Sprite_Clip>(L"Resource/Texture/zelda.png", Vector2(50,50));
 
-	_transform->SetPosition(CENTER);
+	_transform->SetPosition(Vector2(50,50));
 
 	CreateActions();
 	_actions[State::IDLE_F]->Play();
@@ -18,8 +18,7 @@ Zelda::~Zelda()
 
 void Zelda::Update()
 {
-	Input();
-	for (auto action : _actions)
+	for(auto action : _actions)
 		action->Update();
 
 	_transform->Update();
@@ -35,48 +34,6 @@ void Zelda::Render()
 
 void Zelda::Input()
 {
-	Zelda::State _cur = _state;
-	if (KEY_PRESS('S'))
-	{
-		_state = State::RUN_F;
-		_transform->AddVector2(Vector2(0.0f, -1.0f) * 100.0f * DELTA_TIME);
-	}
-	if (KEY_PRESS('W'))
-	{
-		_state = State::RUN_B;
-		_transform->AddVector2(Vector2(0.0f, 1.0f) * 100.0f * DELTA_TIME);
-	}
-	if (KEY_PRESS('A'))
-	{
-		_state = State::RUN_L;
-		_transform->AddVector2(Vector2(-1.0f, 0.0f) * 100.0f * DELTA_TIME);
-	}
-	if (KEY_PRESS('D'))
-	{
-		_state = State::RUN_R;
-		_transform->AddVector2(Vector2(1.0f, 0.0f) * 100.0f * DELTA_TIME);
-	}
-
-	if (KEY_UP('S'))
-	{
-		_state = State::IDLE_F;
-	}
-	if (KEY_UP('W'))
-	{
-		_state = State::IDLE_B;
-	}
-	if (KEY_UP('A'))
-	{
-		_state = State::IDLE_L;
-	}
-	if (KEY_UP('D'))
-	{
-		_state = State::IDLE_R;
-	}
-
-	if (_cur != _state)
-		_actions[_state]->Play();
-	
 }
 
 void Zelda::CreateActions()

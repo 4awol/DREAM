@@ -2,12 +2,12 @@
 #include "Sprite.h"
 
 Sprite::Sprite(wstring path)
-    : Quad()
+: Quad()
 {
     _srv = ADD_SRV(path);
     _size = _srv.lock()->GetImageSize();
 
-    _actionBuffer = make_shared<ActionBuffer>();
+	_actionBuffer = make_shared<ActionBuffer>();
     _actionBuffer->_data.imageSize = _srv.lock()->GetImageSize();
 }
 
@@ -83,5 +83,3 @@ void Sprite::CreateData(wstring path)
 
     _reverseBuffer = make_shared<IntBuffer>();
 }
-
-

@@ -76,14 +76,14 @@ using namespace Microsoft::WRL;
 #include "Framework/Collider/CircleCollider.h"
 #include "Framework/Collider/RectCollider.h"
 
-//Action
+// Action
 #include "Framework/Animation/Action.h"
 
 // Obj
 #include "Object/BagicObject/Quad.h"
 #include "Object/BagicObject/Sprite.h"
-#include "Object/BagicObject/Sprite_Clip.h"
 #include "Object/BagicObject/Sprite_Frame.h"
+#include "Object/BagicObject/Sprite_Clip.h"
 
 // GameObj
 #include "Object/Obj/Planet.h"

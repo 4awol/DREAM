@@ -83,6 +83,6 @@ void Quad::CreateData(wstring path)
 {
 	_vertexBuffer = make_shared<VertexBuffer>(_vertices.data(), sizeof(Vertex_Texture), _vertices.size());
     _indexBuffer = make_shared<IndexBuffer>(_indices.data(), _indices.size());
-    _vs = ADD_VS(L"Shader/TextureVS.hlsl");
+	_vs = ADD_VS(L"Shader/TextureVS.hlsl");
 	_ps = ADD_PS(L"Shader/TexturePS.hlsl");
 }

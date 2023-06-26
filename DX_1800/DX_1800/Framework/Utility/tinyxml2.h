@@ -116,9 +116,9 @@ static const int TINYXML2_MAX_ELEMENT_DEPTH = 500;
 
 namespace tinyxml2
 {
-class XMLDocument; // 파일 자체 
-class XMLElement; // 시작 끝이 있는 좌표를 엘리먼트라고함
-class XMLAttribute; // 엘리먼트에 파란색
+class XMLDocument;
+class XMLElement;
+class XMLAttribute;
 class XMLComment;
 class XMLText;
 class XMLDeclaration;

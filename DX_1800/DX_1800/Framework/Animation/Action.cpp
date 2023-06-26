@@ -2,12 +2,12 @@
 #include "Action.h"
 
 Action::Action(vector<Clip> clips, string name, Type type, float speed)
-	: _clips(clips)
-	, _repeatType(type)
-	, _name(name)
-	, _speed(speed)
+: _clips(clips)
+, _name(name)
+, _repeatType(type)
+, _speed(speed)
 {
-
+	
 }
 
 Action::~Action()
@@ -25,33 +25,33 @@ void Action::Update()
 	{
 		_time = 0.0f;
 
-		switch (_repeatType) // __repeat
+		switch (_repeatType)
 		{
 		case Action::END:
 		{
 			_curClipIndex++;
-			if (_curClipIndex >= _clips.size())
+			if(_curClipIndex >= _clips.size())
 				Stop();
 		}
 			break;
 		case Action::LOOP:
 		{
 			_curClipIndex++;
-			_curClipIndex %= _clips.size(); // 만약 _curClipSize가 _clip 의 사이즈를 넘어가면 다시 1부터 시작하기 때문에 무한으로 돌수 있음
+			_curClipIndex %= _clips.size();
 		}
 			break;
 		case Action::PINGPONG:
 		{
-			if (_isReverse) // 만약 _isReverse가 true라면?
+			if (_isReverse)
 			{
 				_curClipIndex--;
-				if (_curClipIndex <= 0)
+				if(_curClipIndex <= 0)
 					_isReverse = false;
 			}
 			else
 			{
 				_curClipIndex++;
-				if (_curClipIndex >= _clips.size() - 1)
+				if(_curClipIndex >= _clips.size() - 1)
 					_isReverse = true;
 			}
 		}
@@ -65,14 +65,13 @@ void Action::Update()
 void Action::Play()
 {
 	_isPlay = true;
-	_isReverse = false; //bool _isReverse = false;
+	_isReverse = false;
 	_time = 0.0f;
-
 }
 
 void Action::Pause()
 {
-	_isPlay = true;
+	_isPlay = false;
 }
 
 void Action::Stop()
@@ -81,12 +80,8 @@ void Action::Stop()
 	_time = 0.0f;
 	_curClipIndex = 0;
 
-	if (_endEvent != nullptr)
+	if(_endEvent != nullptr)
 		_endEvent();
-	if (_endEventNumber != nullptr)
-		_endEventNumber(5);
-	//if (_spriteSceneFN != nullptr)
-	//	_spriteSceneFN();
 }
 
 void Action::Reset()

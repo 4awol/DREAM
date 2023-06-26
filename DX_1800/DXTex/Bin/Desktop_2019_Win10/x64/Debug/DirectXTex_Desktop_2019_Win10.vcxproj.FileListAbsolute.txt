@@ -1,4 +1,2 @@
-E:\0613\DX_2023_03-main\DX_1800\DXTex\Bin\Desktop_2019_Win10\x64\Debug\DirectXTex.lib
-C:\Users\skgus\Desktop\DX_2023_03-main\DX_1800\DXTex\Bin\Desktop_2019_Win10\x64\Debug\DirectXTex.lib
+E:\0619\새 폴더\DX_2023_03-main\DX_1800\DXTex\Bin\Desktop_2019_Win10\x64\Debug\DirectXTex.lib
 C:\Users\skgus\Desktop\DX_2023_03-main\DX2D_2023\DX_1800\DXTex\Bin\Desktop_2019_Win10\x64\Debug\DirectXTex.lib
-C:\Users\skgus\Downloads\DX2D_2023-main\DX2D_2023-main\DX_1800\DXTex\Bin\Desktop_2019_Win10\x64\Debug\DirectXTex.lib

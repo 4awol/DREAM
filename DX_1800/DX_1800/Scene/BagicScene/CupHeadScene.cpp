@@ -1,6 +1,5 @@
 #include "framework.h"
 #include "CupHeadScene.h"
-
 #include "../../Object/Obj/CupHead/CupHead.h"
 #include "../../Object/Obj/CupHead/CupBG.h"
 
@@ -20,7 +19,10 @@ void CupHeadScene::Update()
 	_player->Update();
 	_bg->Update();
 
-	_bg->GetCollider()->Block(_player->GetCollider());
+	if(_bg->GetCollider()->Block(_player->GetCollider()))
+		_player->Grounded();
+	else
+		_player->SetIsFalling(true);
 
 }
 

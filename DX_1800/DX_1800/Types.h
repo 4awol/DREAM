@@ -8,6 +8,7 @@
 #define RIGHT_VECTOR	 Vector2(1.0f, 0.0f)
 
 #define PI 3.141592
+#define GRAVITY 9.8
 
 #define RED			{1.0f,0.0f,0.0f,1.0f}
 #define GREEN		{0.0f,1.0f,0.0f,1.0f}
@@ -32,11 +33,9 @@
 #define RUN_TIME			Timer::GetInstance()->GetRunTime()
 #define FPS					Timer::GetInstance()->GetFPS()
 
-#define ADD_VS(k)		 ShaderManager::GetInstance()->Add_Vs(k)
-#define ADD_PS(k)	    	ShaderManager::GetInstance()->Add_Ps(k)
+#define ADD_VS(k)		ShaderManager::GetInstance()->Add_Vs(k)
+#define ADD_PS(k)		ShaderManager::GetInstance()->Add_Ps(k)
 
-
-using CallBack = function<void()>; // 반환형식이 void이고 매개변수없는 얘들만 담을수 있음
-using CallBackInt = function<void(int)>;
+using CallBack = function<void()>;
 
 #define LERP(s,e,t)			 s + (e - s) * t

@@ -2,14 +2,14 @@
 #include "Sprite_Clip.h"
 
 Sprite_Clip::Sprite_Clip(wstring path)
-	:Sprite(path)
+: Sprite(path)
 {
 	Sprite::CreateVertices();
 	Sprite::CreateData(path);
 }
 
 Sprite_Clip::Sprite_Clip(wstring path, Vector2 size)
-	:Sprite(path, size)
+: Sprite(path, size)
 {
 	Sprite::CreateVertices();
 	Sprite::CreateData(path);

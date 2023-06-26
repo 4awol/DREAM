@@ -1,28 +1,25 @@
 #include "framework.h"
 #include "CupHead.h"
 
-//#include "../../../Framework/Utility/tinyxml2.h"
-
 CupHead::CupHead()
 {
 	_col = make_shared<CircleCollider>(50);
 	_transform = make_shared<Transform>();
 
-	CreateAction("IDLE");
-	CreateAction("RUN");
-	
+	CreateAction("Idle");
+	CreateAction("Run");
+	CreateAction("Jump");
 
 	_col->GetTransform()->SetPosition(CENTER);
 
 	_transform->SetParent(_col->GetTransform());
-	_transform->AddVector2(Vector2(0, 20));
+	_transform->SetPosition(Vector2(0,20));
 
 	_actions[State::IDLE]->Play();
 	_actions[State::RUN]->Play();
 
 	_sprites[0]->SetLeft();
 	_sprites[1]->SetLeft();
-
 }
 
 CupHead::~CupHead()
@@ -32,65 +29,73 @@ CupHead::~CupHead()
 void CupHead::Update()
 {
 	Input();
+	Jump();
+
 	_col->Update();
 	_transform->Update();
 
-	_actions[_state]->Update();
+	_actions[_curState]->Update();
 
-	_sprites[_state]->SetCurClip(_actions[_state]->GetCurClip());
-	_sprites[_state]->Update();
+	_sprites[_curState]->SetCurClip(_actions[_curState]->GetCurClip());
+	_sprites[_curState]->Update();
 }
 
 void CupHead::Render()
 {
-	_col->Render();
-
 	_transform->SetWorldBuffer(0);
+	_sprites[_curState]->Render();
 
-	_sprites[_state]->Render();
-
+	_col->Render();
 }
 
 void CupHead::PostRender()
 {
-	ImGui::SliderInt("State", (int*)&_state, 0, 1);
 }
 
 void CupHead::Input()
 {
 	if (KEY_PRESS('A'))
 	{
-		_col->GetTransform()->AddVector2(-RIGHT_VECTOR*_speed*DELTA_TIME);
+		_col->GetTransform()->AddVector2(-RIGHT_VECTOR * _speed * DELTA_TIME);
+		
 		SetLeft();
-		SetAction(State::RUN);
 	}
-	else if (KEY_UP('A'))
-	{
-		SetAction(State::IDLE);
-	}
+	
 	if (KEY_PRESS('D'))
 	{
 		_col->GetTransform()->AddVector2(RIGHT_VECTOR * _speed * DELTA_TIME);
+
 		SetRight();
-		SetAction(State::RUN);
-	}
-	else if (KEY_UP('D'))
-	{
-		SetAction(State::IDLE);
 	}
 
+	if(_curState == State::JUMP)
+		return;
+
+	if(KEY_PRESS('A') || KEY_PRESS('D'))
+		SetAction(State::RUN);
+	else if(_curState == State::RUN)
+		SetAction(State::IDLE);
 }
 
-void CupHead::SetAction(State state)
+void CupHead::Jump()
 {
-	if (_state == state)
-		return;
-	
-	_actions[_state]->Reset();
-	_actions[_state]->Pause();
+	if(_isFalling == true)
+		SetAction(State::JUMP);
+	else if(_curState == JUMP && _isFalling == false)
+		SetAction(State::IDLE);
 
-	_state = state;
-	_actions[_state]->Play();
+	_jumpPower -= GRAVITY * 9;
+
+	if(_jumpPower < -_maxFalling)
+		_jumpPower = -_maxFalling;
+
+	_col->GetTransform()->AddVector2(Vector2(0.0f,_jumpPower * DELTA_TIME));
+
+	if (KEY_DOWN(VK_SPACE))
+	{
+		_jumpPower = 1500.0f;
+		_isFalling = true;
+	}
 }
 
 void CupHead::CreateAction(string name, float speed, Action::Type type, CallBack callBack)
@@ -113,7 +118,7 @@ void CupHead::CreateAction(string name, float speed, Action::Type type, CallBack
 
 	while (true)
 	{
-		if (row == nullptr)
+		if(row == nullptr)
 			break;
 
 		int x = row->FindAttribute("x")->IntValue();
@@ -125,7 +130,7 @@ void CupHead::CreateAction(string name, float speed, Action::Type type, CallBack
 		averageH += h;
 		count++;
 
-		Action::Clip clip = Action::Clip(x, y, w, h, srv);
+		Action::Clip clip = Action::Clip(x,y,w,h, srv);
 		clips.push_back(clip);
 
 		row = row->NextSiblingElement();
@@ -133,11 +138,24 @@ void CupHead::CreateAction(string name, float speed, Action::Type type, CallBack
 
 	shared_ptr<Action> action = make_shared<Action>(clips, name, type, speed);
 	action->SetEndEvent(callBack);
-	
+
 	_actions.push_back(action);
 
-	shared_ptr<Sprite_Clip> sprite = make_shared<Sprite_Clip>(srvPath, Vector2(averageW / count, averageH / count));
+	shared_ptr<Sprite_Clip> sprite = make_shared<Sprite_Clip>(srvPath, Vector2(averageW/count, averageH/count));
 	_sprites.push_back(sprite);
+}
 
+void CupHead::SetAction(State state)
+{
+	if(_curState == state)
+		return;
 
+	_curState = state;
+
+	_actions[_oldState]->Reset();
+	_actions[_oldState]->Pause();
+
+	_actions[_curState]->Play();
+
+	_oldState = _curState;
 }
