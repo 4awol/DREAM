@@ -17,6 +17,9 @@ public:
 
 	Vector2 GetImageSize() { return _srv.lock()->GetImageSize(); }
 
+	void SetPS(shared_ptr<PixelShader> ps) { _ps = ps; }
+	void SetVS(shared_ptr<VertexShader> vs) { _vs = vs; }
+
 protected:
 	vector<Vertex_Texture> _vertices;
 	vector<UINT> _indices;
