@@ -19,7 +19,8 @@ void MainScene::Update()
 	_trans->Update();
 	_col->Update();
 
-
+	if (KEY_PRESS('X'))
+		_main_OnAir = false;
 }
 
 void MainScene::Render()

@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Object\Obj\Monster\Monster.h" />
     <ClInclude Include="Scene\DF\MainScene.h" />
     <ClInclude Include="Scene\DF\InvenScene.h" />
     <ClInclude Include="Object\UI\HPbar.h" />
@@ -158,7 +159,7 @@
     <ClInclude Include="Object\Obj\Player\Bullets\Bullets.h" />
     <ClInclude Include="Object\Obj\BackGround\BattleField.h" />
     <ClInclude Include="Object\UI\Button.h" />
-    <ClInclude Include="Object\Obj\Monster\Goblin.h" />
+    <ClInclude Include="Object\Obj\Monster\Monsters\Goblin.h" />
     <ClInclude Include="Object\Obj\Player\Gunner_p.h" />
     <ClInclude Include="Scene\DF\DunScene.h" />
     <ClInclude Include="Framework\Camera\Camera.h" />
@@ -212,6 +213,7 @@
     <ClInclude Include="Framework\Render\VertexShader.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Object\Obj\Monster\Monster.cpp" />
     <ClCompile Include="Scene\DF\MainScene.cpp" />
     <ClCompile Include="Scene\DF\InvenScene.cpp" />
     <ClCompile Include="Object\UI\HPbar.cpp" />
@@ -219,7 +221,7 @@
     <ClCompile Include="Object\Obj\Player\Bullets\Bullets.cpp" />
     <ClCompile Include="Object\Obj\BackGround\BattleField.cpp" />
     <ClCompile Include="Object\UI\Button.cpp" />
-    <ClCompile Include="Object\Obj\Monster\Goblin.cpp" />
+    <ClCompile Include="Object\Obj\Monster\Monsters\Goblin.cpp" />
     <ClCompile Include="Object\Obj\Player\Gunner_p.cpp" />
     <ClCompile Include="Scene\DF\DunScene.cpp" />
     <ClCompile Include="Framework\Camera\Camera.cpp" />
@@ -273,6 +275,7 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="DX_1800.ico" />
+    <Image Include="Resource\Player\Gunner_Idle.png" />
     <Image Include="small.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -441,6 +444,9 @@
   </ItemGroup>
   <ItemGroup>
     <Library Include="Library\FMOD\fmod_vc.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="Resource\Player\Gunner_Idle.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

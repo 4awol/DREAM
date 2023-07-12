@@ -1,15 +1,16 @@
 #include "framework.h"
 #include "stage_1.h"
 
-#include "../../Object/Obj/Monster/Goblin.h"
+#include "../../Object/Obj/Monster/Monsters/Goblin.h"
 #include "../../Object/Obj/BackGround/BattleField.h"
 #include "../../Object/Obj/Player/Gunner_p.h"
+
+#include "InvenScene.h"
 
 stage_1::stage_1()
 {
 	_goblin = make_shared<class Goblin>();
 	_bg = make_shared<class BattleField>();
-	
 }
 
 stage_1::~stage_1()
@@ -27,13 +28,14 @@ void stage_1::Update()
 	{
 		_goblin->Update();
 	}
+	else
+	{
+		_st1_OnAir = false;
+		InvenScene::Instance()._inven_OnAir = true;
+	}
+
 	Gunner_p::Instance().Input();
 	Gunner_p::Instance().Update();
-
-	
-	
-	
-
 
 }
 

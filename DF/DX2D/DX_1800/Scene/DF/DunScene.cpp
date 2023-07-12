@@ -2,9 +2,9 @@
 #include "DunScene.h"
 
 #include "../../Object/Obj/Player/Gunner_p.h"
-#include "../DF/stage_1.h"
-#include "../DF/InvenScene.h"
-#include "../DF/MainScene.h"
+#include "MainScene.h"
+#include "stage_1.h"
+#include "InvenScene.h"
 
 DunScene::DunScene()
 {
@@ -15,7 +15,6 @@ DunScene::DunScene()
 
 	_main = make_shared<class MainScene>();
 
-	_inven = make_shared<class InvenScene>();
 
 	_st1 = make_shared<class stage_1>();
 }
@@ -26,37 +25,38 @@ DunScene::~DunScene()
 
 void DunScene::Update()
 {
-	if(Main==true)
-	{
+	if (_main->_main_OnAir == true)
 		_main->Update();
-		if (KEY_DOWN('X'))
-		{
-			Main = false;
-			St1 = true;
-		}
-	}
-	if (St1 == true)
+	if (_main->_main_OnAir == false)
+	{
+		_st1->_st1_OnAir = true;
 		_st1->Update();
+	}
+	if (InvenScene::Instance()._inven_OnAir == true)
+		InvenScene::Instance().Update();
 
-	_button->Update();
+	//_button->Update();
 }
 
 void DunScene::Render()
 {
-	if(Main==true)
+	if(_main->_main_OnAir == true)
 		_main->Render();
 
-	if (St1 == true)
+	if (_st1->_st1_OnAir == true)
 		_st1->Render();
+
+	if(InvenScene::Instance()._inven_OnAir==true)
+		InvenScene::Instance().Render();
 	
 }
 
 void DunScene::PostRender()
 {
-	if(Main==true)
+	if(_main->_main_OnAir == true)
 		_main->PostRender();
 
-	if (St1 == true)
+	if (_st1->_st1_OnAir == true)
 		_st1->PostRender();
 
 	_button->PostRender();

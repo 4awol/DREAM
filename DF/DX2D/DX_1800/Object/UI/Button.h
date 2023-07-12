@@ -12,6 +12,8 @@ public:
 	void SetEvent(CallBack fn) { _event = fn; }
 
 private:
+	
+
 	shared_ptr<RectCollider> _col;
 	shared_ptr<Transform> _quadTransform;
 	shared_ptr<Quad> _quad;

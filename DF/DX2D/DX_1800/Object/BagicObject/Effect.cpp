@@ -80,5 +80,17 @@ void Effect::CreateAction_ByFrame(string name, wstring file, Vector2 maxFrame, V
 
 void Effect::CreateAction_ByXML(string name, wstring file, wstring xmlPath, Vector2 size, float speed, Action::Type type)
 {
-	// TODO
+	//_sprite = make_shared<Sprite_Frame>(file, size);
+	//shared_ptr<SRV> srv = ADD_SRV(file);
+	//
+	//vector<Action::Clip> clips;
+	//
+	//for (int i = 0; i < frameCount; i++)
+	//{
+	//	float x, y, width, height;
+	//	clips.push_back(Action::Clip(x, y, width, height, srv));
+	//}
+	//
+	//_action = make_shared<Action>(clips, name, type, speed);
+	//_action->SetEndEvent(std::bind(&Effect::End, this));
 }
