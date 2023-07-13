@@ -9,7 +9,7 @@ public:
 	virtual void Render() override;
 	void PostRender();
 
-	bool _main_OnAir = true;
+	int _main_OnAir = 1;
 
 private:
 	shared_ptr<RectCollider> _col;

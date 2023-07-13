@@ -3,6 +3,7 @@
 
 #include "Bullets/Bullets.h"
 
+
 class Gunner_p
 {
 	enum State
@@ -52,8 +53,11 @@ public:
 	bool CanFalling = true;
 	bool CanMove = true;
 
+	void MHp() { _hp -= 1; }
+	int GetHp() {return _hp; }
+	void SetHp() { _hp = 1; }
 
-
+	void SetPosition();
 private:
 	
 	
@@ -78,6 +82,8 @@ private:
 
 	float _jumpPower = 0.0f;
 	float _maxFalling = 800.0f;
+
+	int _hp = 1;
 
 	// knight
 	shared_ptr<class Knight> _knight;

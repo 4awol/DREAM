@@ -195,6 +195,9 @@
     <ClInclude Include="Object\Obj\Monster\Monster.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Scene\DF\StageSelectScene.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DX_1800.cpp">
@@ -336,6 +339,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Object\Obj\Monster\Monster.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\DF\StageSelectScene.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

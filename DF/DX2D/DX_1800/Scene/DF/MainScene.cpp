@@ -20,7 +20,7 @@ void MainScene::Update()
 	_col->Update();
 
 	if (KEY_PRESS('X'))
-		_main_OnAir = false;
+		_main_OnAir = 0;
 }
 
 void MainScene::Render()

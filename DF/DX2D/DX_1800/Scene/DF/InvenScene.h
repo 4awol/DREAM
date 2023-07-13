@@ -40,11 +40,15 @@ private:
 	shared_ptr<RectCollider> _playerwearCol;
 	shared_ptr<RectCollider> _headCol;
 	shared_ptr<RectCollider> _armorCol;
+
+	shared_ptr<Transform> _weaponTrans;
 	shared_ptr<RectCollider> _weaponCol;
+	shared_ptr<Quad> _weaponQuad;
+
 	shared_ptr<RectCollider> _bootsCol;
 
-	shared_ptr<Transform> _nextStageButtonTrans;
-	shared_ptr<Quad> _nextStageButton;
+	shared_ptr<Transform> _nextButtonTrans;
+	shared_ptr<Quad> _nextButtonQuad;
 
 };
 

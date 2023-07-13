@@ -4,6 +4,9 @@
 #include "Helper/Knight.h"
 #include "Bullets/Bullets.h"
 
+#include "../../../Scene/DF/StageSelectScene.h"
+
+
 Gunner_p::Gunner_p()
 {
 	_col = make_shared<RectCollider>(Vector2(40, 80));
@@ -13,9 +16,11 @@ Gunner_p::Gunner_p()
 
 	_trans->SetParent(_col->GetTransform());
 
+	SetPosition();
+
 
 	_actions[State::IDLE]->Play();
-	_sprites[0]->SetLeft();
+	_sprites[0]->SetRight();
 
 	_knight = make_shared<class Knight>();
 
@@ -36,50 +41,52 @@ Gunner_p::~Gunner_p()
 
 void Gunner_p::Update()
 {
-	Input();
-	Jump();
-
-	_trans->Update();
-	_col->Update();
-
-	_actions[_curState]->Update();
-	_sprites[_curState]->SetCurClip(_actions[_curState]->GetCurClip());
-	_sprites[_curState]->Update();
-
-	if (!CanMove)
-	{
-		// 일정 시간 (예: 3초)이 지나면 CanMove을 다시 true로 설정
-		static float elapsedTime = 0.0f;
-		elapsedTime += DELTA_TIME;
-
-		if (elapsedTime >= 0.3f)
-		{
-			CanMove = true;
-			elapsedTime = 0.0f;
-		}
-	}
-
-	if (_isActive_Knight==true)
-	{
-		_timer += DELTA_TIME;
-
-		_knight->Update();
-		if (_timer >= 1.0f)
-		{
-			_isActive_Knight = false;
-			_timer = 0.0f;
-		}
-	}
 	
-	for (auto bullet : _bullets)
-		bullet->Update();
-	
+	{
+		Input();
+		Jump();
 
+		_trans->Update();
+		_col->Update();
+
+		_actions[_curState]->Update();
+		_sprites[_curState]->SetCurClip(_actions[_curState]->GetCurClip());
+		_sprites[_curState]->Update();
+
+		if (!CanMove)
+		{
+			// 일정 시간 (예: 3초)이 지나면 CanMove을 다시 true로 설정
+			static float elapsedTime = 0.0f;
+			elapsedTime += DELTA_TIME;
+
+			if (elapsedTime >= 0.3f)
+			{
+				CanMove = true;
+				elapsedTime = 0.0f;
+			}
+		}
+
+		if (_isActive_Knight == true)
+		{
+			_timer += DELTA_TIME;
+
+			_knight->Update();
+			if (_timer >= 1.0f)
+			{
+				_isActive_Knight = false;
+				_timer = 0.0f;
+			}
+		}
+
+		for (auto bullet : _bullets)
+			bullet->Update();
+
+	}
 }
 
 void Gunner_p::Render()
 {
-	
+
 	_trans->SetWorldBuffer(0);
 	_sprites[_curState]->Render();
 
@@ -93,6 +100,7 @@ void Gunner_p::Render()
 	{
 		_knight->Render();
 	}
+
 }
 
 void Gunner_p::PostRender()
@@ -147,11 +155,13 @@ void Gunner_p::Jump()
 		_col->GetTransform()->AddVector2(Vector2(0.0f, _jumpPower * DELTA_TIME));
 		//_trans->AddVector2(Vector2(0.0f, _jumpPower * DELTA_TIME));
 
-
-		if (KEY_DOWN('C')) // Spacebar를 누르고 현재 낙하 중이 아닐 때만 실행
+		if(Gunner_p::Instance()._col->GetTransform()->GetPos().y <-190)
 		{
-			_jumpPower = 1500.0f;
-			_isFalling = true;
+			if (KEY_DOWN('C')) // Spacebar를 누르고 현재 낙하 중이 아닐 때만 실행
+			{
+				_jumpPower = 1500.0f;
+				_isFalling = true;
+			}
 		}
 	}
 
@@ -206,6 +216,11 @@ shared_ptr<Bullets> Gunner_p::SetBullets()
 	}
 
 	return nullptr;
+}
+
+void Gunner_p::SetPosition()
+{
+	_col->GetTransform()->SetPosition(Vector2(-600, -100));
 }
 
 void Gunner_p::CreateAction(string name, float speed, Action::Type type, CallBack callBack)

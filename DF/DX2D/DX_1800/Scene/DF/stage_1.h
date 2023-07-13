@@ -1,6 +1,5 @@
 #pragma once
 
-
 class stage_1
 {
 public:
@@ -15,6 +14,7 @@ public:
 	void IsCollision();
 
 	bool _st1_OnAir = false;
+
 
 private:
 	shared_ptr<class Goblin> _goblin;

@@ -204,6 +204,7 @@
     <ClInclude Include="Framework\Render\ShaderManager.h" />
     <ClInclude Include="Framework\Utility\SoundManager.h" />
     <ClInclude Include="Scene\DF\stage_1.h" />
+    <ClInclude Include="Scene\DF\StageSelectScene.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Framework\Math\Transform.h" />
     <ClInclude Include="Framework\Utility\Timer.h" />
@@ -269,6 +270,7 @@
     <ClCompile Include="Framework\Render\ShaderManager.cpp" />
     <ClCompile Include="Framework\Utility\SoundManager.cpp" />
     <ClCompile Include="Scene\DF\stage_1.cpp" />
+    <ClCompile Include="Scene\DF\StageSelectScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="DX_1800.rc" />

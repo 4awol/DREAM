@@ -5,7 +5,7 @@
 #include "../../Object/Obj/BackGround/BattleField.h"
 #include "../../Object/Obj/Player/Gunner_p.h"
 
-#include "InvenScene.h"
+#include "StageSelectScene.h"
 
 stage_1::stage_1()
 {
@@ -31,7 +31,19 @@ void stage_1::Update()
 	else
 	{
 		_st1_OnAir = false;
-		InvenScene::Instance()._inven_OnAir = true;
+		_goblin->SetHp();
+		_goblin->SetPosition();
+		Gunner_p::Instance().SetPosition();
+		StageSelectScene::Instance().SelectStage = 0;
+	}
+
+	if (Gunner_p::Instance().GetHp() < 0)
+	{
+		_st1_OnAir = false;
+		Gunner_p::Instance().SetHp();
+		_goblin->SetPosition();
+		Gunner_p::Instance().SetPosition();
+		StageSelectScene::Instance().SelectStage = 0;
 	}
 
 	Gunner_p::Instance().Input();
@@ -102,6 +114,8 @@ void stage_1::IsCollision()
 	}
 	
 	_bg->GetBottomCollider()->Block(Gunner_p::Instance()._col);
+	
+
 }
 
 

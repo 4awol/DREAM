@@ -37,6 +37,8 @@ InvenScene::InvenScene()
 		_armorCol = make_shared<RectCollider>(Vector2(100, 100));
 		_armorCol->GetTransform()->AddVector2(Vector2(-500, 100));
 
+		_weaponTrans = make_shared<Transform>();
+		_weaponQuad = make_shared<Quad>(L"Resource/Inven/weapon_title.png", Vector2(100, 100));
 		_weaponCol = make_shared<RectCollider>(Vector2(100, 100));
 		_weaponCol->GetTransform()->AddVector2(Vector2(-720, -100));
 
@@ -44,9 +46,9 @@ InvenScene::InvenScene()
 		_bootsCol->GetTransform()->AddVector2(Vector2(-500, -350));
 	}
 
-	_nextStageButtonTrans = make_shared<Transform>();
-	_nextStageButton = make_shared <Quad>(L"Resource/UI/Button.png", Vector2(200, 100));
-	_nextStageButtonTrans->AddVector2(Vector2(500, -400));
+	_nextButtonTrans = make_shared<Transform>();
+	_nextButtonQuad = make_shared <Quad>(L"Resource/UI/Button.png", Vector2(200, 100));
+	_nextButtonTrans->AddVector2(Vector2(500, -400));
 
 
 	
@@ -71,10 +73,13 @@ void InvenScene::Update()
 	_playerwearCol->Update();
 	_headCol->Update();
 	_armorCol->Update();
+
+	_weaponTrans->Update();
 	_weaponCol->Update();
+	_weaponQuad->Update();
 	_bootsCol->Update();
 
-	_nextStageButtonTrans->Update();
+	_nextButtonTrans->Update();
 }
 
 void InvenScene::Render()
@@ -93,10 +98,14 @@ void InvenScene::Render()
 	_playerwearCol->Render();
 	_headCol->Render();
 	_armorCol->Render();
+
+	_weaponTrans->SetWorldBuffer(0);
 	_weaponCol->Render();
+	_weaponQuad->Render();
+
 	_bootsCol->Render();
 
-	_nextStageButtonTrans->SetWorldBuffer(0);
-	_nextStageButton->Render();
+	_nextButtonTrans->SetWorldBuffer(0);
+	_nextButtonQuad->Render();
 
 }

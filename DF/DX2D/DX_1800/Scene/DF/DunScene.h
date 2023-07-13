@@ -18,7 +18,6 @@ private:
 
 	shared_ptr<class MainScene> _main;
 
-
 	shared_ptr<class stage_1> _st1;
 };
 
