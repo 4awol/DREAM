@@ -13,6 +13,10 @@ Gunner_p::Gunner_p()
 	_trans = make_shared<Transform>();
 	
 	CreateAction("Gunner_Idle", 0.2f, Action::PINGPONG);
+	CreateAction("Gunner_Walk", 0.2f, Action::LOOP);
+	CreateAction("Gunner_Jump", 0.05f, Action::END);
+	CreateAction("Gunner_JumpAttack", 0.1f, Action::END);
+	CreateAction("Gunner_Attack", 0.05f, Action::END);
 
 	_trans->SetParent(_col->GetTransform());
 
@@ -20,6 +24,10 @@ Gunner_p::Gunner_p()
 
 
 	_actions[State::IDLE]->Play();
+	_actions[State::WALK]->Play();
+	_actions[State::JUMP]->Play();
+	_actions[State::JUMPATTACK]->Play();
+	_actions[State::ATTACK]->Play();
 	_sprites[0]->SetRight();
 
 	_knight = make_shared<class Knight>();
@@ -41,13 +49,17 @@ Gunner_p::~Gunner_p()
 
 void Gunner_p::Update()
 {
-	
+	if (_howLook == true)
+		_sprites[_curState]->SetLeft();
+	else
+		_sprites[_curState]->SetRight();
+
 	{
 		Input();
 		Jump();
-
-		_trans->Update();
+		
 		_col->Update();
+		_trans->Update();
 
 		_actions[_curState]->Update();
 		_sprites[_curState]->SetCurClip(_actions[_curState]->GetCurClip());
@@ -55,7 +67,6 @@ void Gunner_p::Update()
 
 		if (!CanMove)
 		{
-			// 일정 시간 (예: 3초)이 지나면 CanMove을 다시 true로 설정
 			static float elapsedTime = 0.0f;
 			elapsedTime += DELTA_TIME;
 
@@ -78,8 +89,14 @@ void Gunner_p::Update()
 			}
 		}
 
-		for (auto bullet : _bullets)
+		for (auto& bullet : _bullets)
+		{
+			if (bullet == nullptr)
+				return;
+			if (IsFalling() == false)
+				bullet->GetTrans()->SetAngle(45);
 			bullet->Update();
+		}
 
 	}
 }
@@ -90,7 +107,6 @@ void Gunner_p::Render()
 	_trans->SetWorldBuffer(0);
 	_sprites[_curState]->Render();
 
-	_col->Render();
 
 
 	for (auto bullet : _bullets)
@@ -111,24 +127,37 @@ void Gunner_p::Input()
 {
 	if (CanMove == true)
 	{
+	
 		if (KEY_PRESS(VK_RIGHT))
 		{
 			_sprites[_curState]->SetRight();
+			SetAction(State::WALK);
 			if (GoRight == true)
 			{
 				_col->GetTransform()->AddVector2(RIGHT_VECTOR * DELTA_TIME * _speed);
 				_howLook = false;
 			}
 		}
+		if (KEY_UP(VK_RIGHT))
+		{
+			SetAction(State::IDLE);
+			_sprites[_curState]->SetRight();
+		}
 
 		if (KEY_PRESS(VK_LEFT))
 		{
 			_sprites[_curState]->SetLeft();
+			SetAction(State::WALK);
 			if (GoLeft == true)
 			{
 				_col->GetTransform()->AddVector2(-RIGHT_VECTOR * DELTA_TIME * _speed);
 				_howLook = true;
 			}
+		}
+		if (KEY_UP(VK_LEFT))
+		{
+			SetAction(State::IDLE);
+			_sprites[_curState]->SetLeft();
 		}
 	}
 	
@@ -146,49 +175,63 @@ void Gunner_p::Input()
 
 void Gunner_p::Jump()
 {
+	if (_isFalling == true && _isAttack == false)
+		SetAction(State::JUMP);
+	else if (_curState == JUMP && _isFalling == false && _isAttack == false)
+		SetAction(State::IDLE);
+
+	_jumpPower -= GRAVITY * 9;
+
+	if (_jumpPower < -_maxFalling)
+		_jumpPower = -_maxFalling;
+
+	_col->GetTransform()->AddVector2(Vector2(0.0f, _jumpPower * DELTA_TIME));
+
+	if (Gunner_p::Instance()._col->GetTransform()->GetPos().y < -190)
 	{
-		_jumpPower -= GRAVITY * 9;
-
-		if (_jumpPower < -_maxFalling)
-			_jumpPower = -_maxFalling;
-
-		_col->GetTransform()->AddVector2(Vector2(0.0f, _jumpPower * DELTA_TIME));
-		//_trans->AddVector2(Vector2(0.0f, _jumpPower * DELTA_TIME));
-
-		if(Gunner_p::Instance()._col->GetTransform()->GetPos().y <-190)
+		if (KEY_DOWN('C') && _isAttack== false) // Spacebar를 누르고 현재 낙하 중이 아닐 때만 실행
 		{
-			if (KEY_DOWN('C')) // Spacebar를 누르고 현재 낙하 중이 아닐 때만 실행
+			
+			if (_howLook == false)
 			{
+				_sprites[_curState]->SetRight();
+				_jumpPower = 1500.0f;
+				_isFalling = true;
+			}
+			else
+			{
+				_sprites[_curState]->SetLeft();
 				_jumpPower = 1500.0f;
 				_isFalling = true;
 			}
 		}
 	}
-
 }
 
 void Gunner_p::Attack()
 {
 	if (KEY_DOWN('X'))
 	{
-		CanMove = false;
-
-		shared_ptr<Bullets> curBullet = SetBullets();
-		if (curBullet == nullptr)
-			return;
-		
-		curBullet->_isActive = true;
-		curBullet->SetPosition(_col->GetTransform()->GetWorldPos());
-		if (_howLook == false)
+		if (!_isAttack)
 		{
-			curBullet->SetDirection(RIGHT_VECTOR);  // 오른쪽 방향으로 설정
-		}
-		else
-		{
-			curBullet->SetDirection(-RIGHT_VECTOR);  // 왼쪽 방향으로 설정
-		}
+			CanMove = false;
+			SetAction(State::ATTACK);
+			shared_ptr<Bullets> curBullet = SetBullets();
+			if (curBullet == nullptr)
+				return;
 
-
+			curBullet->_isActive = true;
+			curBullet->SetPosition(_col->GetTransform()->GetWorldPos());
+			if (_howLook == false)
+			{
+				curBullet->SetDirection(RIGHT_VECTOR);  // 오른쪽 방향으로 설정
+			}
+			else
+			{
+				curBullet->SetDirection(-RIGHT_VECTOR);  // 왼쪽 방향으로 설정
+			}
+			_actions[State::ATTACK]->SetEndEvent(std::bind(&Gunner_p::AttackEnd, this));
+		}
 	}
 }
 
@@ -218,9 +261,16 @@ shared_ptr<Bullets> Gunner_p::SetBullets()
 	return nullptr;
 }
 
+void Gunner_p::AttackEnd()
+{
+	_isAttack = false;
+	SetAction(State::IDLE);
+}
+
 void Gunner_p::SetPosition()
 {
 	_col->GetTransform()->SetPosition(Vector2(-600, -100));
+	SetAction(State::IDLE);
 }
 
 void Gunner_p::CreateAction(string name, float speed, Action::Type type, CallBack callBack)

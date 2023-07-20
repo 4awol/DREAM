@@ -8,7 +8,11 @@ class Gunner_p
 {
 	enum State
 	{
-		IDLE
+		IDLE,
+		WALK,
+		JUMP,
+		JUMPATTACK,
+		ATTACK
 	};
 private:
 	Gunner_p();
@@ -50,8 +54,13 @@ public:
 	shared_ptr<class Bullets> SetBullets();
 	vector<shared_ptr<class Bullets>>& GetBullets() { return _bullets; }
 
-	bool CanFalling = true;
 	bool CanMove = true;
+
+	bool IsFalling() { return _isFalling; }
+	void SetIsFalling(bool value) { _isFalling = value; }
+	void Grounded() { _isFalling = false; }
+	void AttackEnd();
+	
 
 	void MHp() { _hp -= 1; }
 	int GetHp() {return _hp; }
@@ -59,8 +68,6 @@ public:
 
 	void SetPosition();
 private:
-	
-	
 	// player
 	void CreateAction(string name, float speed = 0.1f, Action::Type type = Action::Type::LOOP, CallBack callBack = nullptr);
 
@@ -75,15 +82,15 @@ private:
 	bool _canMove = false;
 	bool _howLook; //true ¿ÞÂÊ false ¿À¸¥ÂÊ
 	float _timer = 0.0f;
-	float _speed = 300.0f;
+	float _speed = 120.0f;
 	
-	bool _isFalling = true;
+	bool _isFalling;
 	bool _isAttack = false;
 
 	float _jumpPower = 0.0f;
 	float _maxFalling = 800.0f;
 
-	int _hp = 1;
+	int _hp = 10000;
 
 	// knight
 	shared_ptr<class Knight> _knight;

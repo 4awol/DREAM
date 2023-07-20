@@ -27,27 +27,41 @@ public:
 
 	bool _inven_OnAir = false;
 
+	 vector<vector<shared_ptr<RectCollider>>>& GetRectCol()  
+	{
+		return _rectCol;
+	}
 private:
 	
 	static InvenScene* _instance;
 
-	shared_ptr<Transform> _trans;
 	vector<vector<shared_ptr<RectCollider>>> _rectCol;
 
 	shared_ptr<Transform> _listTrans;
 	shared_ptr<RectCollider> _listCol;
 
+	shared_ptr<Transform> _playerwearTrans;
 	shared_ptr<RectCollider> _playerwearCol;
+	shared_ptr<Quad> _playerwearQuad;
+
+	shared_ptr<Transform> _headTrans;
 	shared_ptr<RectCollider> _headCol;
+	shared_ptr<Quad> _headQuad;
+
+	shared_ptr<Transform> _armorTrans;
 	shared_ptr<RectCollider> _armorCol;
+	shared_ptr<Quad> _armorQuad;
 
 	shared_ptr<Transform> _weaponTrans;
 	shared_ptr<RectCollider> _weaponCol;
 	shared_ptr<Quad> _weaponQuad;
 
+	shared_ptr<Transform> _bootsTrans;
 	shared_ptr<RectCollider> _bootsCol;
+	shared_ptr<Quad> _bootsQuad;
 
 	shared_ptr<Transform> _nextButtonTrans;
+	shared_ptr<RectCollider> _nextButtonCol;
 	shared_ptr<Quad> _nextButtonQuad;
 
 };

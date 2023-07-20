@@ -115,6 +115,11 @@ void stage_1::IsCollision()
 	
 	_bg->GetBottomCollider()->Block(Gunner_p::Instance()._col);
 	
+	if (Gunner_p::Instance()._col->GetTransform()->GetPos().y < -190)
+		Gunner_p::Instance().Grounded();
+	else
+		Gunner_p::Instance().SetIsFalling(true);
+
 
 }
 

@@ -6,7 +6,7 @@
 StageSelectScene::StageSelectScene()
 {
 	_st1_trans = make_shared<Transform>();
-	_st1_col = make_shared<RectCollider>(Vector2(50, 50));
+	_st1_col = make_shared<RectCollider>(Vector2(100, 100));
 	_st1_col->GetTransform()->SetParent(_st1_trans);
 	_st1_trans->AddVector2(Vector2(-700, 400));
 

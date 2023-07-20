@@ -360,6 +360,15 @@
     <Image Include="Resource\Player\Gunner_Idle.png">
       <Filter>리소스 파일</Filter>
     </Image>
+    <Image Include="Resource\Player\Gunner_Walk.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\Player\Gunner_Jump.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\Player\Gunner_JumpAttack.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Shader\TutorialShader.hlsl" />
@@ -385,5 +394,8 @@
   </ItemGroup>
   <ItemGroup>
     <Xml Include="Resource\Player\Gunner_Idle.xml" />
+    <Xml Include="Resource\Player\Gunner_Walk.xml" />
+    <Xml Include="Resource\Player\Gunner_Jump.xml" />
+    <Xml Include="Resource\Player\Gunner_JumpAttack.xml" />
   </ItemGroup>
 </Project>

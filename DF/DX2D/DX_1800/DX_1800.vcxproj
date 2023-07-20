@@ -278,6 +278,9 @@
   <ItemGroup>
     <Image Include="DX_1800.ico" />
     <Image Include="Resource\Player\Gunner_Idle.png" />
+    <Image Include="Resource\Player\Gunner_Jump.png" />
+    <Image Include="Resource\Player\Gunner_JumpAttack.png" />
+    <Image Include="Resource\Player\Gunner_Walk.png" />
     <Image Include="small.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -449,6 +452,9 @@
   </ItemGroup>
   <ItemGroup>
     <Xml Include="Resource\Player\Gunner_Idle.xml" />
+    <Xml Include="Resource\Player\Gunner_Jump.xml" />
+    <Xml Include="Resource\Player\Gunner_JumpAttack.xml" />
+    <Xml Include="Resource\Player\Gunner_Walk.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

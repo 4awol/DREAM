@@ -17,10 +17,11 @@ public:
 	bool IsActive() { return _isActive;  }
 
 	shared_ptr<CircleCollider> GetCollider() { return _col; }
-	void GetTrans() { _trans; }
 
 	bool _isActive = false;
 	float _lifeTime = 0.0f;
+
+	shared_ptr<Transform> &GetTrans() { return _trans; }
 
 private:
 	shared_ptr<CircleCollider> _col;

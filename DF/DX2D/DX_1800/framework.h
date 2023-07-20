@@ -19,6 +19,7 @@
 #include <string>
 #include <unordered_map>
 #include <algorithm>
+#include <cmath>
 #include <wrl/client.h>
 #include <functional>
 
