@@ -168,7 +168,7 @@
     <ClInclude Include="Scene\DF\stage_1.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Object\Obj\Monster\Monsters\Goblin.h">
+    <ClInclude Include="Object\Obj\Monster\Goblin\Goblin.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Object\UI\Button.h">
@@ -314,7 +314,7 @@
     <ClCompile Include="Scene\DF\stage_1.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Object\Obj\Monster\Monsters\Goblin.cpp">
+    <ClCompile Include="Object\Obj\Monster\Goblin\Goblin.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Object\UI\Button.cpp">
@@ -369,6 +369,9 @@
     <Image Include="Resource\Player\Gunner_JumpAttack.png">
       <Filter>리소스 파일</Filter>
     </Image>
+    <Image Include="Resource\Monster\Goblin\Monster_Idle">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Shader\TutorialShader.hlsl" />
@@ -397,5 +400,6 @@
     <Xml Include="Resource\Player\Gunner_Walk.xml" />
     <Xml Include="Resource\Player\Gunner_Jump.xml" />
     <Xml Include="Resource\Player\Gunner_JumpAttack.xml" />
+    <Xml Include="Resource\Monster\Goblin\Monster_Idle.xml" />
   </ItemGroup>
 </Project>

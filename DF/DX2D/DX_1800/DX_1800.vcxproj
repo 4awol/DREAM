@@ -159,7 +159,7 @@
     <ClInclude Include="Object\Obj\Player\Bullets\Bullets.h" />
     <ClInclude Include="Object\Obj\BackGround\BattleField.h" />
     <ClInclude Include="Object\UI\Button.h" />
-    <ClInclude Include="Object\Obj\Monster\Monsters\Goblin.h" />
+    <ClInclude Include="Object\Obj\Monster\Goblin\Goblin.h" />
     <ClInclude Include="Object\Obj\Player\Gunner_p.h" />
     <ClInclude Include="Scene\DF\DunScene.h" />
     <ClInclude Include="Framework\Camera\Camera.h" />
@@ -222,7 +222,7 @@
     <ClCompile Include="Object\Obj\Player\Bullets\Bullets.cpp" />
     <ClCompile Include="Object\Obj\BackGround\BattleField.cpp" />
     <ClCompile Include="Object\UI\Button.cpp" />
-    <ClCompile Include="Object\Obj\Monster\Monsters\Goblin.cpp" />
+    <ClCompile Include="Object\Obj\Monster\Goblin\Goblin.cpp" />
     <ClCompile Include="Object\Obj\Player\Gunner_p.cpp" />
     <ClCompile Include="Scene\DF\DunScene.cpp" />
     <ClCompile Include="Framework\Camera\Camera.cpp" />
@@ -277,6 +277,7 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="DX_1800.ico" />
+    <Image Include="Resource\Monster\Goblin\Monster_Idle" />
     <Image Include="Resource\Player\Gunner_Idle.png" />
     <Image Include="Resource\Player\Gunner_Jump.png" />
     <Image Include="Resource\Player\Gunner_JumpAttack.png" />
@@ -451,6 +452,7 @@
     <Library Include="Library\FMOD\fmod_vc.lib" />
   </ItemGroup>
   <ItemGroup>
+    <Xml Include="Resource\Monster\Goblin\Monster_Idle.xml" />
     <Xml Include="Resource\Player\Gunner_Idle.xml" />
     <Xml Include="Resource\Player\Gunner_Jump.xml" />
     <Xml Include="Resource\Player\Gunner_JumpAttack.xml" />

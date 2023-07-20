@@ -7,18 +7,12 @@
 class Goblin : public Monster
 {
 public:
-	enum State
-	{
-		IDLE
-	};
 	Goblin();
 	~Goblin();
 
 	void Update();
 	void Render();
 	void PostRender();
-
-	void SetAction(State state);
 
 	shared_ptr<RectCollider> GetCollider() { return _col; }
 	shared_ptr<Transform> GetTrans() { return _trans; }
@@ -33,20 +27,7 @@ public:
 	
 	void DropWeapon();
 
-	struct 
-	{
-
-	};
-
 private:
-	void CreateAction(string name, float speed = 0.1f, Action::Type type = Action::Type::LOOP, CallBack callBack = nullptr);
-
-	vector<shared_ptr<Action>> _actions;
-	vector<shared_ptr<Sprite_Clip>> _sprites;
-
-	State _curState = State::IDLE;
-	State _oldState = State::IDLE;
-
 	shared_ptr<class RectCollider> _col;
 	shared_ptr<class Transform> _trans;
 

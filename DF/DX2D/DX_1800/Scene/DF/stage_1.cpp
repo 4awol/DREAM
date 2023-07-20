@@ -1,7 +1,7 @@
 #include "framework.h"
 #include "stage_1.h"
 
-#include "../../Object/Obj/Monster/Monsters/Goblin.h"
+#include "../../Object/Obj/Monster/Goblin/Goblin.h"
 #include "../../Object/Obj/BackGround/BattleField.h"
 #include "../../Object/Obj/Player/Gunner_p.h"
 
