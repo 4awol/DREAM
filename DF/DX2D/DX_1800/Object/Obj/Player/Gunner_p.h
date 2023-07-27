@@ -2,7 +2,7 @@
 #include "framework.h"
 
 #include "Bullets/Bullets.h"
-
+#include "Helper/Knight.h"
 
 class Gunner_p
 {
@@ -12,7 +12,10 @@ class Gunner_p
 		WALK,
 		JUMP,
 		JUMPATTACK,
-		ATTACK
+		ATTACK,
+		RUN,
+		ATTACKCOMBO,
+		SLIDING
 	};
 private:
 	Gunner_p();
@@ -34,8 +37,9 @@ public:
 	void Input();
 	void Jump();
 	void Attack();
-	void SetAction(State state);
+	void Run();
 
+	void SetAction(State state);
 
 	bool GoLeft = true;
 	void CanGoLeft() { GoLeft = false; }
@@ -53,20 +57,25 @@ public:
 
 	shared_ptr<class Bullets> SetBullets();
 	vector<shared_ptr<class Bullets>>& GetBullets() { return _bullets; }
-
+	shared_ptr<class Knight>& GetKnight() { return _knight; }
 	bool CanMove = true;
+	bool _howLook; //true 哭率 false 坷弗率
 
 	bool IsFalling() { return _isFalling; }
 	void SetIsFalling(bool value) { _isFalling = value; }
 	void Grounded() { _isFalling = false; }
 	void AttackEnd();
-	
+	Vector2 MoveToward(const Vector2& current, const Vector2& target, float maxDistance);
+
 
 	void MHp() { _hp -= 1; }
 	int GetHp() {return _hp; }
 	void SetHp() { _hp = 1; }
 
 	void SetPosition();
+
+	bool _isActive_Knight = false;
+
 private:
 	// player
 	void CreateAction(string name, float speed = 0.1f, Action::Type type = Action::Type::LOOP, CallBack callBack = nullptr);
@@ -80,21 +89,24 @@ private:
 
 	Vector2 _pos;
 	bool _canMove = false;
-	bool _howLook; //true 哭率 false 坷弗率
 	float _timer = 0.0f;
 	float _speed = 120.0f;
 	
 	bool _isFalling;
 	bool _isAttack = false;
+	bool _canDash = false;
+	bool _isDash = false;
+	float _dashTime = 0.0f;
+	bool _isSliding = false;
+	float _slideTime = 0.0f;
 
 	float _jumpPower = 0.0f;
 	float _maxFalling = 800.0f;
 
-	int _hp = 10000;
+	int _hp = 1;
 
 	// knight
 	shared_ptr<class Knight> _knight;
-	bool _isActive_Knight = false;
 
 	// hpbar
 	shared_ptr<class HPbar> _hpbar;

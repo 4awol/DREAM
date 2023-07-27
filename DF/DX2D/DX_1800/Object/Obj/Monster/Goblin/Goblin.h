@@ -10,9 +10,9 @@ public:
 	Goblin();
 	~Goblin();
 
-	void Update();
-	void Render();
-	void PostRender();
+	void Update() override;
+	void Render() override;
+	void PostRender() override;
 
 	shared_ptr<RectCollider> GetCollider() { return _col; }
 	shared_ptr<Transform> GetTrans() { return _trans; }
@@ -33,5 +33,5 @@ private:
 
 	float _timer = 0.0f;
 	
-	int _hp=2;
+	int _hp=10000;
 };

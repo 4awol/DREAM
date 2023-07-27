@@ -11,10 +11,10 @@ StageSelectScene::StageSelectScene()
 	_st1_trans->AddVector2(Vector2(-700, 400));
 
 	_callInvenTrans = make_shared<Transform>();
-	_callInvenCol = make_shared<RectCollider>(Vector2(200, 80));
+	_callInvenCol = make_shared<RectCollider>(Vector2(100, 100));
 	_callInvenCol->GetTransform()->SetParent(_callInvenTrans);
-	_callInvenQuad = make_shared<Quad>(L"Resource/UI/Button.png", Vector2(200, 100));
-	_callInvenTrans->SetPosition(Vector2(600, -200));
+	_callInvenQuad = make_shared<Quad>(L"Resource/StageSelectScene/InvenIcon.png", Vector2(100, 100));
+	_callInvenTrans->SetPosition(Vector2(600, -300));
 }
 
 StageSelectScene::~StageSelectScene()

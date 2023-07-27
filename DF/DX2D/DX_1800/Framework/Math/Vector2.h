@@ -44,6 +44,11 @@ public:
 		return result = Vector2(this->x * value, this->y * value);
 	}
 
+	Vector2 operator/(const float& value) const
+	{
+		return Vector2(x / value, y / value);
+	}
+
 	Vector2 operator*(const double& value) const
 	{
 		Vector2 result;
@@ -132,4 +137,13 @@ public:
 	int ManhattenDistance(const Vector2& other) const;
 
 	Vector2 TransformCoord(XMMATRIX matrix);
+
+	
+
+	Vector2 Lerp(const Vector2& start, const Vector2& end, float t) 
+	{
+		return Vector2(start.x + (end.x - start.x) * t, start.y + (end.y - start.y) * t);
+	}
+
+
 };

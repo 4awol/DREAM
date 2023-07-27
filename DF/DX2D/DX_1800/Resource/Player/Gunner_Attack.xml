@@ -5,7 +5,4 @@
 	<sprite n="0070.png" x="417" y="1" w="206" h="147"/>
 	<sprite n="0071.png" x="625" y="1" w="206" h="147"/>
 	<sprite n="0072.png" x="833" y="1" w="206" h="147"/>
-	<sprite n="0073.png" x="1041" y="1" w="206" h="147"/>
-	<sprite n="0074.png" x="1249" y="1" w="206" h="147"/>
-	<sprite n="0075.png" x="1457" y="1" w="206" h="147"/>
 </TextureAtlas>

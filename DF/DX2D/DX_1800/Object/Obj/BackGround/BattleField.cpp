@@ -18,6 +18,8 @@ BattleField::BattleField()
 	_transformLeft->AddVector2(Vector2(-1000, 0));
 	_colLeft->GetTransform()->SetParent(_transformLeft);
 
+	_battleFieldTrans = make_shared<Transform>();
+	_battleFieldQuad = make_shared<Quad>(L"Resource/BG/BattleMap.bmp",Vector2(2000,1050));
 }
 
 BattleField::~BattleField()
@@ -26,7 +28,6 @@ BattleField::~BattleField()
 
 void BattleField::Update()
 {
-
 	_colBottom->GetTransform()->SetPosition(Vector2(0, -500));
 
 	_transformBottom->Update();
@@ -37,10 +38,15 @@ void BattleField::Update()
 
 	_transformLeft->Update();
 	_colLeft->Update();
+
+	_battleFieldTrans->Update();
 }
 
 void BattleField::Render()
 {
+	_battleFieldTrans->SetWorldBuffer(0);
+	_battleFieldQuad->Render();
+
 	_transformBottom->SetWorldBuffer(0);
 	_colBottom->Render();
 

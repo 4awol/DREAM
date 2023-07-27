@@ -372,6 +372,18 @@
     <Image Include="Resource\Monster\Goblin\Monster_Idle">
       <Filter>리소스 파일</Filter>
     </Image>
+    <Image Include="Resource\Helper\doll_attack.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\Helper\doll_jump.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\Helper\doll_idle.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\BG\BattleMap.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Shader\TutorialShader.hlsl" />
@@ -401,5 +413,8 @@
     <Xml Include="Resource\Player\Gunner_Jump.xml" />
     <Xml Include="Resource\Player\Gunner_JumpAttack.xml" />
     <Xml Include="Resource\Monster\Goblin\Monster_Idle.xml" />
+    <Xml Include="Resource\Helper\doll_attack.xml" />
+    <Xml Include="Resource\Helper\doll_jump.xml" />
+    <Xml Include="Resource\Helper\doll_idle.xml" />
   </ItemGroup>
 </Project>

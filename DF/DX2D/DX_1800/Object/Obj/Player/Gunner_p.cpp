@@ -16,7 +16,10 @@ Gunner_p::Gunner_p()
 	CreateAction("Gunner_Walk", 0.2f, Action::LOOP);
 	CreateAction("Gunner_Jump", 0.05f, Action::END);
 	CreateAction("Gunner_JumpAttack", 0.1f, Action::END);
-	CreateAction("Gunner_Attack", 0.05f, Action::END);
+	CreateAction("Gunner_Attack", 0.050f, Action::END);
+	CreateAction("Gunner_Dash");
+	CreateAction("Gunner_AttackCombo", 0.050f, Action::END);
+	CreateAction("Gunner_Sliding", 0.5f, Action::END);
 
 	_trans->SetParent(_col->GetTransform());
 
@@ -28,6 +31,9 @@ Gunner_p::Gunner_p()
 	_actions[State::JUMP]->Play();
 	_actions[State::JUMPATTACK]->Play();
 	_actions[State::ATTACK]->Play();
+	_actions[State::RUN]->Play();
+	_actions[State::SLIDING]->Play();
+
 	_sprites[0]->SetRight();
 
 	_knight = make_shared<class Knight>();
@@ -77,6 +83,13 @@ void Gunner_p::Update()
 			}
 		}
 
+		if (_dashTime > 0.2f && _curState == IDLE)
+		{
+			_dashTime = 0.0f;
+			_canDash = false;
+		}
+
+		
 		if (_isActive_Knight == true)
 		{
 			_timer += DELTA_TIME;
@@ -88,6 +101,39 @@ void Gunner_p::Update()
 				_timer = 0.0f;
 			}
 		}
+
+		if (_isSliding==true)
+		{
+			_slideTime += DELTA_TIME;
+			
+			if (_slideTime >= 0.60f)
+			{
+				SetAction(State::IDLE);
+				_slideTime = 0.0f;
+				_isSliding = false;
+			}
+			else
+			{
+				float t = _slideTime / 5.0f; 
+
+				Vector2 currentPosition = _col->GetTransform()->GetPos();
+				float moveSpeed = 400.0f; 
+				if (_howLook == false)
+				{
+					Vector2 newPosition = MoveToward(currentPosition, Vector2(currentPosition.x + 400, currentPosition.y), moveSpeed * DELTA_TIME);
+					_col->GetTransform()->SetPosition(newPosition);
+					_isDash = true;
+				}
+				if (_howLook == true)
+				{
+					Vector2 newPosition = MoveToward(currentPosition, Vector2(currentPosition.x - 400, currentPosition.y), moveSpeed * DELTA_TIME);
+					_col->GetTransform()->SetPosition(newPosition);
+					_isDash = true;
+				}
+			}
+		}
+
+		
 
 		for (auto& bullet : _bullets)
 		{
@@ -131,15 +177,21 @@ void Gunner_p::Input()
 		if (KEY_PRESS(VK_RIGHT))
 		{
 			_sprites[_curState]->SetRight();
-			SetAction(State::WALK);
-			if (GoRight == true)
+			_dashTime += DELTA_TIME;
+			if (_isDash == false)
 			{
-				_col->GetTransform()->AddVector2(RIGHT_VECTOR * DELTA_TIME * _speed);
-				_howLook = false;
+				SetAction(State::WALK);
+				if (GoRight == true)
+				{
+					_col->GetTransform()->AddVector2(RIGHT_VECTOR * DELTA_TIME * _speed);
+					_howLook = false;
+				}
 			}
 		}
-		if (KEY_UP(VK_RIGHT))
+	
+		if (KEY_UP(VK_RIGHT) && _isSliding==false)
 		{
+			_canDash = true;
 			SetAction(State::IDLE);
 			_sprites[_curState]->SetRight();
 		}
@@ -147,30 +199,38 @@ void Gunner_p::Input()
 		if (KEY_PRESS(VK_LEFT))
 		{
 			_sprites[_curState]->SetLeft();
-			SetAction(State::WALK);
-			if (GoLeft == true)
+			_dashTime += DELTA_TIME;
+
+			if (_isDash == false)
 			{
-				_col->GetTransform()->AddVector2(-RIGHT_VECTOR * DELTA_TIME * _speed);
-				_howLook = true;
+				SetAction(State::WALK);
+				if (GoLeft == true)
+				{
+					_col->GetTransform()->AddVector2(-RIGHT_VECTOR * DELTA_TIME * _speed);
+					_howLook = true;
+				}
 			}
 		}
-		if (KEY_UP(VK_LEFT))
+		if (KEY_UP(VK_LEFT) && _isSliding == false)
 		{
+			_canDash = true;
 			SetAction(State::IDLE);
 			_sprites[_curState]->SetLeft();
 		}
-	}
 	
+	}
 	if (KEY_DOWN('1'))
 	{
 		if (_isActive_Knight == true)
 			return;
 		_isActive_Knight = true;
-		_knight->SetPosition(_trans->GetWorldPos()+Vector2(50,0));
+		if (_howLook == false)
+			_knight->SetPosition(_trans->GetWorldPos() + Vector2(50, 0));
+		else
+			_knight->SetPosition(_trans->GetWorldPos() + Vector2(-50, 0));
 	}
-
+	Run();
 	Attack();
-
 }
 
 void Gunner_p::Jump()
@@ -184,7 +244,7 @@ void Gunner_p::Jump()
 
 	if (_jumpPower < -_maxFalling)
 		_jumpPower = -_maxFalling;
-
+	
 	_col->GetTransform()->AddVector2(Vector2(0.0f, _jumpPower * DELTA_TIME));
 
 	if (Gunner_p::Instance()._col->GetTransform()->GetPos().y < -190)
@@ -197,6 +257,7 @@ void Gunner_p::Jump()
 				_sprites[_curState]->SetRight();
 				_jumpPower = 1500.0f;
 				_isFalling = true;
+
 			}
 			else
 			{
@@ -205,32 +266,100 @@ void Gunner_p::Jump()
 				_isFalling = true;
 			}
 		}
+		
 	}
 }
 
 void Gunner_p::Attack()
 {
-	if (KEY_DOWN('X'))
+	if (KEY_DOWN('X') && _isDash==false)
 	{
-		if (!_isAttack)
+		if (_isAttack == true)
 		{
 			CanMove = false;
-			SetAction(State::ATTACK);
+			_isAttack = true;
+			SetAction(State::ATTACKCOMBO);
+
 			shared_ptr<Bullets> curBullet = SetBullets();
 			if (curBullet == nullptr)
 				return;
-
 			curBullet->_isActive = true;
-			curBullet->SetPosition(_col->GetTransform()->GetWorldPos());
-			if (_howLook == false)
+			if (_howLook == true)
 			{
-				curBullet->SetDirection(RIGHT_VECTOR);  // 오른쪽 방향으로 설정
-			}
-			else
-			{
+				curBullet->SetPosition(_col->GetTransform()->GetWorldPos() + Vector2(-80, 20));
 				curBullet->SetDirection(-RIGHT_VECTOR);  // 왼쪽 방향으로 설정
 			}
+			if (_howLook == false)
+			{
+				curBullet->SetPosition(_col->GetTransform()->GetWorldPos() + Vector2(80, 20));
+				curBullet->SetDirection(RIGHT_VECTOR);  // 오른쪽 방향으로 설정
+			}
+			_actions[State::ATTACKCOMBO]->SetEndEvent(std::bind(&Gunner_p::AttackEnd, this));
+
+			
+
+		}
+		else if (_isAttack == false)
+		{
+
+			CanMove = false;
+			_isAttack = true;
+			SetAction(State::ATTACK);
+
+			shared_ptr<Bullets> curBullet = SetBullets();
+			if (curBullet == nullptr)
+				return;
+			curBullet->_isActive = true;
+			if (_howLook == true)
+			{
+				curBullet->SetPosition(_col->GetTransform()->GetWorldPos() + Vector2(-50, 20));
+				curBullet->SetDirection(-RIGHT_VECTOR);  // 왼쪽 방향으로 설정
+			}
+			if (_howLook == false)
+			{
+				curBullet->SetPosition(_col->GetTransform()->GetWorldPos() + Vector2(50, 20));
+				curBullet->SetDirection(RIGHT_VECTOR);  // 오른쪽 방향으로 설정
+			}
 			_actions[State::ATTACK]->SetEndEvent(std::bind(&Gunner_p::AttackEnd, this));
+
+		}
+	}
+	if (KEY_DOWN('X') && _isDash == true && _col->GetTransform()->GetPos().y < -190)
+	{
+		_canDash = false;
+		_isSliding = true;
+		SetAction(State::SLIDING);
+
+	}
+}
+
+
+
+void Gunner_p::Run()
+{
+	if (_canDash == true)
+	{
+		if (KEY_PRESS(VK_LEFT))
+		{
+			SetAction(State::RUN);
+			_isDash = true;
+			if(GoLeft == true)
+			_col->GetTransform()->AddVector2(-RIGHT_VECTOR * DELTA_TIME * _speed * 4.0f);
+
+		}
+		if (KEY_PRESS(VK_RIGHT))
+		{
+			SetAction(State::RUN);
+			_isDash = true;
+			if(GoRight == true)
+			_col->GetTransform()->AddVector2(RIGHT_VECTOR * DELTA_TIME * _speed * 4.0f);
+
+		}
+		if (KEY_UP(VK_LEFT) || KEY_UP(VK_RIGHT))
+		{
+			_isDash = false;
+			SetAction(State::IDLE);
+			
 		}
 	}
 }
@@ -265,6 +394,15 @@ void Gunner_p::AttackEnd()
 {
 	_isAttack = false;
 	SetAction(State::IDLE);
+}
+
+Vector2 Gunner_p::MoveToward(const Vector2& current, const Vector2& target, float maxDistance)
+{
+	Vector2 direction = target - current;
+	float distance = direction.Length();
+	if (distance <= maxDistance || distance == 0.0f)
+		return target;
+	return current + (direction / distance) * maxDistance;
 }
 
 void Gunner_p::SetPosition()

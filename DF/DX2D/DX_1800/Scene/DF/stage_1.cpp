@@ -46,7 +46,7 @@ void stage_1::Update()
 		StageSelectScene::Instance().SelectStage = 0;
 	}
 
-	Gunner_p::Instance().Input();
+	//Gunner_p::Instance().Input();
 	Gunner_p::Instance().Update();
 
 }
@@ -83,6 +83,11 @@ void stage_1::Attack()
 				bullet->_isActive = false;
 				_goblin->Mhp();
 			}
+		}
+
+		if (Gunner_p::Instance().GetKnight()->GetCollider()->IsCollision(_goblin->GetCollider()) && Gunner_p::Instance()._isActive_Knight==true)
+		{		
+			_goblin->Mhp();
 		}
 	}
 }

@@ -23,5 +23,8 @@ private:
 	shared_ptr<RectCollider> _colLeft;
 	shared_ptr<Transform> _transformLeft;
 
+	shared_ptr<Transform> _battleFieldTrans;
+	shared_ptr<Quad> _battleFieldQuad;
+
 };
 

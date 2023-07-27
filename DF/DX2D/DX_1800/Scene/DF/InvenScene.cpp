@@ -58,9 +58,9 @@ InvenScene::InvenScene()
 	}
 
 	_nextButtonTrans = make_shared<Transform>();
-	_nextButtonCol = make_shared<RectCollider>(Vector2(200, 100));
+	_nextButtonCol = make_shared<RectCollider>(Vector2(150, 150));
 	_nextButtonCol->GetTransform()->SetParent(_nextButtonTrans);
-	_nextButtonQuad = make_shared <Quad>(L"Resource/UI/Button.png", Vector2(200, 100));
+	_nextButtonQuad = make_shared <Quad>(L"Resource/Inven/X_Icon.png", Vector2(150, 150));
 	_nextButtonTrans->AddVector2(Vector2(500, -400));
 
 

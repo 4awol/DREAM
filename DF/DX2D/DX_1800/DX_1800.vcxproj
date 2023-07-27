@@ -277,6 +277,10 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="DX_1800.ico" />
+    <Image Include="Resource\BG\BattleMap.bmp" />
+    <Image Include="Resource\Helper\doll_attack.png" />
+    <Image Include="Resource\Helper\doll_idle.png" />
+    <Image Include="Resource\Helper\doll_jump.png" />
     <Image Include="Resource\Monster\Goblin\Monster_Idle" />
     <Image Include="Resource\Player\Gunner_Idle.png" />
     <Image Include="Resource\Player\Gunner_Jump.png" />
@@ -452,6 +456,9 @@
     <Library Include="Library\FMOD\fmod_vc.lib" />
   </ItemGroup>
   <ItemGroup>
+    <Xml Include="Resource\Helper\doll_attack.xml" />
+    <Xml Include="Resource\Helper\doll_idle.xml" />
+    <Xml Include="Resource\Helper\doll_jump.xml" />
     <Xml Include="Resource\Monster\Goblin\Monster_Idle.xml" />
     <Xml Include="Resource\Player\Gunner_Idle.xml" />
     <Xml Include="Resource\Player\Gunner_Jump.xml" />
