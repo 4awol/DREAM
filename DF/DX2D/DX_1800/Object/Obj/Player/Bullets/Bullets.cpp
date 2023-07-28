@@ -31,7 +31,7 @@ void Bullets::Update()
 	_trans->Update();
 
 	_col->GetTransform()->AddVector2(_direction * _speed * DELTA_TIME);
-
+		
 	if (_col->GetTransform()->GetWorldPos().x > 1000 || _col->GetTransform()->GetWorldPos().x <-1000)
 		SetActive(false);
 

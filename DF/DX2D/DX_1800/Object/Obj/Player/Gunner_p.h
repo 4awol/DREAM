@@ -65,6 +65,7 @@ public:
 	void SetIsFalling(bool value) { _isFalling = value; }
 	void Grounded() { _isFalling = false; }
 	void AttackEnd();
+	void CanJump();
 	Vector2 MoveToward(const Vector2& current, const Vector2& target, float maxDistance);
 
 
@@ -92,18 +93,22 @@ private:
 	float _timer = 0.0f;
 	float _speed = 120.0f;
 	
-	bool _isFalling;
 	bool _isAttack = false;
+
 	bool _canDash = false;
 	bool _isDash = false;
 	float _dashTime = 0.0f;
+
 	bool _isSliding = false;
 	float _slideTime = 0.0f;
 
+	bool _canJump = true;
+	bool _isFalling;
 	float _jumpPower = 0.0f;
 	float _maxFalling = 800.0f;
 
 	int _hp = 1;
+
 
 	// knight
 	shared_ptr<class Knight> _knight;
