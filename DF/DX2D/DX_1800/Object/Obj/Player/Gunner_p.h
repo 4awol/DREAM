@@ -113,6 +113,7 @@ private:
 	// knight
 	shared_ptr<class Knight> _knight;
 
+
 	// hpbar
 	shared_ptr<class HPbar> _hpbar;
 

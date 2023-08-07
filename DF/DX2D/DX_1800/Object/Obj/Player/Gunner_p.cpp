@@ -119,7 +119,7 @@ void Gunner_p::Update()
 				float t = _slideTime / 5.0f; 
 
 				Vector2 currentPosition = _col->GetTransform()->GetPos();
-				float moveSpeed = 600.0f; 
+				float moveSpeed = 800.0f; 
 				if (_howLook == false)
 				{
 					Vector2 newPosition = MoveToward(currentPosition, Vector2(currentPosition.x + 400, currentPosition.y), moveSpeed * DELTA_TIME);

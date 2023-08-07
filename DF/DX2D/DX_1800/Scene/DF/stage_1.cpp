@@ -34,6 +34,7 @@ void stage_1::Update()
 		_goblin->SetHp();
 		_goblin->SetPosition();
 		Gunner_p::Instance().SetPosition();
+		Gunner_p::Instance()._isActive_Knight = false;
 		StageSelectScene::Instance().SelectStage = 0;
 	}
 
@@ -43,6 +44,7 @@ void stage_1::Update()
 		Gunner_p::Instance().SetHp();
 		_goblin->SetPosition();
 		Gunner_p::Instance().SetPosition();
+		Gunner_p::Instance()._isActive_Knight = false;
 		StageSelectScene::Instance().SelectStage = 0;
 	}
 

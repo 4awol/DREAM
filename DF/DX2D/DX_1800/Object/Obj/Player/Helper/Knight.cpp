@@ -3,11 +3,12 @@
 
 #include "../Gunner_p.h"
 #include "../../Monster/Monster.h"
+#include "../../Monster/Goblin/Goblin.h"
 
 Knight::Knight()
 {
 	_trans = make_shared<Transform>();
-	_col = make_shared<class CircleCollider>(300);
+	_col = make_shared<class CircleCollider>(50);
 	_col->GetTransform()->SetParent(_trans);
 
 	CreateAction("doll_idle");
@@ -42,7 +43,7 @@ void Knight::Render()
 	if (Gunner_p::Instance()._isActive_Knight == true)
 	{
 		_trans->SetWorldBuffer(0);
-
+		_col->Render();
 		_sprites[_curState]->Render();
 	}
 }
@@ -92,9 +93,12 @@ void Knight::Attack()
 		{
 			_sprites[_curState]->SetLeft();
 		}
-
 	}
 
+	if (_col->IsCollision(_goblin->GetCollider()))
+	{
+		_goblin->Mhp();
+	}
 }
 
 void Knight::CreateAction(string name, float speed, Action::Type type, CallBack callBack)
