@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<TextureAtlas imagePath="spritesheet.png">
-	<sprite n="0000.png" x="74" y="1" w="71" h="99"/>
-	<sprite n="0001.png" x="147" y="1" w="71" h="99"/>
-</TextureAtlas>
-
-

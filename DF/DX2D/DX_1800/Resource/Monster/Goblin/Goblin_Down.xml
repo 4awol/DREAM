@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<TextureAtlas imagePath="spritesheet.png">
-	<sprite n="5_1-removebg-preview_(1).png" x="1" y="1" w="100" h="88"/>
-	<sprite n="5_2-removebg-preview_(1).png" x="103" y="1" w="99" h="90"/>
-	<sprite n="5_3-removebg-preview_(1).png" x="204" y="1" w="99" h="89"/>
-	<sprite n="5_4-removebg-preview_(1).png" x="305" y="1" w="110" h="89"/>
-	<sprite n="5_5-removebg-preview_(1).png" x="417" y="1" w="115" h="89"/>
-</TextureAtlas>
